@@ -6,8 +6,8 @@ App<IAppOption>({
     erptoken: '',
 
     city: '庄河',
-    api: '',
-    picturePath: '',
+    api: 'https://mobile.51fubaba.cn:8443/zh-weapp',
+    picturePath: 'https://haomai.51fubaba.com:5443/picture/house_picture/',
 
     agent: {
       agent_user_id: '',
