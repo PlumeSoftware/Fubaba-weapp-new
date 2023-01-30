@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "home": "./home/home",
+    "user": "./user/user",
+    "selling": "./selling/selling"
+  }
+}
