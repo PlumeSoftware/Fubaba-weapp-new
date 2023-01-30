@@ -1,0 +1,266 @@
+<view class="house-swiper">
+  <ng-container wx:if="{{housing.pictures && housing.pictures.length}}">
+    <view class="page-section page-section-spacing swiper">
+      <swiper
+        indicator-dots="{{indicatorDots}}"
+        autoplay="{{autoplay}}"
+        interval="{{interval}}"
+        duration="{{duration}}"
+        style="height:280px;width:100%"
+      >
+        <block wx:for="{{imgUrls}}" wx:key="index">
+          <swiper-item>
+            <image
+              src="{{item}}"
+              class="slide-image"
+              binderror="errorLoadImage"
+              data-errorimg="{{item}}"
+            />
+          </swiper-item>
+        </block>
+      </swiper>
+      <van-button
+        wx:if="{{existVr}}"
+        icon="aim"
+        class="vr-btn"
+        type="info"
+        round
+        size="mini"
+        bind:click="toVrView"
+      >vr
+      </van-button>
+    </view>
+    <switch
+      wx:if="{{open}}"
+      checked="{{indicatorDots}}"
+      bindchange="changeIndicatorDots"
+    />
+    <!-- 如果需要分页器 -->
+    <view class="swiper-pagination"></view>
+  </ng-container>
+  <ng-container wx:if="{{!(housing.pictures && housing.pictures.length)}}">
+    <swiper
+      indicator-dots="{{indicatorDots}}"
+      autoplay="{{autoplay}}"
+      interval="{{interval}}"
+      duration="{{duration}}"
+      style="width:100%"
+      data-option="{{swiperOpts}}"
+    >
+      <block wx:for="{{imgUrls}}" wx:key="index">
+        <swiper-item>
+          <image src="../../../images/logo.png" class="slide-image" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </ng-container>
+</view>
+<view class="house weui-article ">
+  <view class="house-overview">
+    <view class="house-overview-desc">
+      <h1 class="house-title">{{housing.hus_build_name}} {{model}} {{housing.hus_expose}}</h1>
+      <view
+        class="attention"
+        bindtap="doFavoriteOrNot"
+        class="{{attentioned ? 'attentioned' : 'attention'}}"
+      >
+        <i class="attention-icon"></i>
+        <span class="text" wx:if="{{!attentioned}}">关注</span>
+        <span class="text" wx:if="{{attentioned}}">已关注</span>
+      </view>
+    </view>
+    <view class="house-detail-desc">
+      <view class="desc-block" wx:if="{{req_type==1}}">
+        <p class="desc">{{ base.req_amt}}万</p>
+        <view class="title" decode="{{true}}">售价</view>
+      </view>
+      <view class="desc-block" wx:else>
+        <p class="desc">{{ base.req_amt2}}元/月</p>
+        <view class="title" decode="{{true}}">房租</view>
+      </view>
+
+      <view class="desc-block">
+        <p class="desc">{{title}}</p>
+        <view class="title">房型</view>
+      </view>
+      <view class="desc-block">
+        <p class="desc">{{ housing.hus_area}}m²</p>
+        <view class="title">建筑面积</view>
+      </view>
+    </view>
+  </view>
+  <view class="house-intro">
+    <view class="weui-flex house-attrs" wx:if="{{base.req_type==1}}">
+      <view class="weui-flex__item">
+        <span class="attr">单价：</span>
+        <span class="desc">{{base.req_amt3}}元/平</span>
+      </view>
+      <view class="weui-flex__item" wx:if="{{base.req_amt>0}}">
+        <span class="attr">挂牌：</span>
+        <span class="desc">{{housing.hus_id}}</span>
+      </view>
+      <view class="weui-flex__item" wx:if="{{housing.hus_expose!=''}}">
+        <span class="attr">朝向：</span>
+        <span class="desc">{{ housing.hus_expose}}</span>
+      </view>
+      <view class="weui-flex__item" wx:if="{{housing.hus_floors!='0'}}">
+        <span class="attr">楼层：</span>
+        <span class="desc">{{housing.hus_floors
+          <4?'低楼层':(housing.hus_floors<=7?'中楼层':'高楼层')}}</span>
+            <span
+            class="desc"
+            wx:if="{{!floorLevel}}"
+          ></span>
+      </view>
+      <view class="weui-flex__item " wx:if="{{housing.hus_jiegou!='null'}}">
+        <span class="attr">楼型：</span>
+        <span class="desc">{{ housing.hus_jiegou}}</span>
+      </view>
+      <view class="weui-flex__item" wx:if="{{housing.hus_fitment!='null'}}">
+        <span class="attr">装修：</span>
+        <span class="desc">{{ housing.hus_fitment}}</span>
+      </view>
+      <view class="weui-flex__item" wx:if="{{housing.hus_build_year!='0'&&housing.hus_build_year!='null'}}">
+        <span class="attr">年代：</span>
+        <span class="desc notice">{{ housing.hus_build_year}}年</span>
+      </view>
+      <view class="weui-flex__item" wx:if="{{housing.hus_usage!='null'}}">
+        <span class="attr">用途：</span>
+        <span class="desc">{{ housing.hus_usage}}</span>
+      </view>
+      <view class="weui-flex__item" wx:if="{{housing.hus_property_name!='null'}}">
+        <span class="attr">权属：</span>
+        <span class="desc">{{ housing.hus_property_name}}</span>
+      </view>
+    </view>
+    <view class="weui-flex house-attrs" wx:if="{{base.req_type==0}}">
+      <view class="weui-flex__item">
+        <span class="attr">方式：</span>
+        <span class="desc">{{pay_way}}</span>
+      </view>
+      <view class="weui-flex__item" wx:if="{{housing.req_amt>0}}">
+        <span class="attr">挂牌：</span>
+        <span class="desc">{{husId}}</span>
+      </view>
+      <view class="weui-flex__item" wx:if="{{housing.hus_expose!=''}}">
+        <span class="attr">朝向：</span>
+        <span class="desc">{{ housing.hus_expose}}</span>
+      </view>
+
+    </view>
+    <view class="weui-flex house-attrs">
+      <view class="weui-flex__item">
+        <span class="attr">地址：</span>
+        <span class="desc">{{housing.hus_chengqu=='null'?'':housing.hus_chengqu}} {{ housing.hus_build_name}}</span>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="weui-panel">
+  <view class="weui-panel__hd title">配套设施</view>
+  <view class="plant-list" wx:if="{{housing.hus_plant.length > 0}}">
+    <view
+      class="plant-item"
+      wx:for="{{housing.hus_plant}}"
+      wx:key="index"
+    >
+      <van-icon name="/images/rent/{{item.tagCode}}.png" size="38" />
+      <view>{{item.tagName}}</view>
+    </view>
+  </view>
+  <view class="weui-media-box weui-media-box_text" wx:else>
+    <view style="display:block;margin:2vh 0">
+      请联系经纪人了解更多
+    </view>
+  </view>
+</view>
+<view class="weui-panel">
+  <view class="weui-panel__hd title">经纪人房评</view>
+  <view class="weui-panel__bd">
+    <view class="weui-media-box weui-media-box_text">
+      <div
+        wx:if="{{ad_remark[0]!='null'&&ad_remark[0]!=''}}"
+        wx:for="{{ad_remark}}"
+        wx:key="index"
+      >
+        <div style="display:block;margin:2vh 0">
+          {{item}}
+        </div>
+      </div>
+      <div wx:if="{{ad_remark[0]=='null'||ad_remark[0]==''}}">
+        <div style="display:block;margin:2vh 0">
+          暂无房评
+        </div>
+      </div>
+    </view>
+  </view>
+</view>
+<view class="weui-panel weui-panel_access housing-list" wx:if="{{relatedHouses}}">
+  <view class="weui-panel__hd title">相关房源</view>
+  <view class="weui-panel__bd">
+    <ng-container
+      wx:for="{{relatedHouses}}"
+      wx:key="index"
+      wx:for-index="index"
+      wx:key="index"
+      wx:for-item="item"
+      data-index="{{index}}"
+    >
+      <room-source-filter-bar sellingHouse="{{item}}"></room-source-filter-bar>
+    </ng-container>
+  </view>
+</view>
+<view wx:if="{{agent}}" style="padding-top: 21.333vw;"></view>
+<view wx:if="{{agent}}" class="agent-foot">
+  <view class="agent-container">
+    <view class="agent-info">
+      <view class="agent-avatar-block">
+        <navigator
+          wx:if="{{agent.agent_profile_pic}}"
+          href="javascript:;"
+          class="agent-avatar"
+        >
+          <image
+            src="{{userProfilePictureRootPath}}{{ agent.agent_profile_pic}}"
+            alt="经纪人 {{ agent.agent_real_name}}"
+            class="image-size"
+          ></image>
+        </navigator>
+        <navigator
+          wx:if="{{!agent.agent_profile_pic}}"
+          href="javascript:;"
+          class="agent-avatar"
+        >
+          <image
+            src="../../../images/setuser.jpg"
+            alt="经纪人 {{ agent.agent_real_name}}}"
+            class="image-size"
+          ></image>
+        </navigator>
+      </view>
+      <view class="agent-des">
+        <view class="agent-name">
+          <span>{{ agent.agent_real_name}}</span>
+        </view>
+      </view>
+    </view>
+    <view class="agent-content">
+      <button class="weui-btn weui-btn_primary" bindtap="setPhone">打电话</button>
+    </view>
+  </view>
+</view>
+<view wx:if="{{isagent}}" class="sideicon sideicon.icon-1">
+  <van-icon
+    name="share"
+    size="25"
+    bind:click="onPaper"
+  />
+</view>
+<view class="sideicon sideicon.icon-0">
+  <van-icon
+    name="wap-home"
+    size="25"
+    bind:click="onClickHome"
+  />
+</view>
+
