@@ -1,0 +1,20 @@
+{
+  "name": "miniprogram-ts-less-quickstart",
+  "version": "1.0.0",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/crypto-js": "^4.1.1",
+    "@vant/weapp": "^1.10.6",
+    "crypto-js": "^4.1.1",
+    "vant": "^3.6.5",
+    "vant-weapp": "^0.5.29"
+  },
+  "devDependencies": {
+    "miniprogram-api-typings": "^2.12.0"
+  },
+  "main": ".eslintrc.js",
+  "description": ""
+}
