@@ -1,0 +1,95 @@
+<view>
+  <view class="weui-article">
+    <view wx:if="{{token!==''}}" class="weui-panel weui-panel_access">
+      <view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_appmsg">
+          <view class="userinfo">
+            <view class="userinfo-avatar">
+              <image
+                class="logo"
+                style="width:100%;height:100%"
+                src="/images/setuser.jpg"
+                mode="aspectFit"
+              ></image>
+            </view>
+          </view>
+          <view class="weui-media-box__bd">
+            <h4 class="weui-media-box__title">{{ nickname }}</h4>
+            <ul class="weui-media-box__info">
+              <li class="weui-media-box__info__meta" wx-if="{{phoneNumber}}">{{ phoneNumber }}</li>
+              <button
+                class="weui-media-box_get_phone_btn"
+                wx-if="{{!phoneNumber}}"
+                open-type="getPhoneNumber"
+                bindgetphonenumber="getUserProfile"
+              >
+                点击绑定手机号
+              </button>
+            </ul>
+          </view>
+          <view wx:if="{{isAgent}}" bind:tap="toProfilePage">
+            <van-icon
+              color="gray"
+              name="qr"
+              size="2em"
+              style="padding-right:1em"
+            />
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 未登录 -->
+    <view wx:if="{{ token=='' }}" class="weui-panel">
+      <view class="userinfo">
+        <view class="userinfo-avatar">
+          <image
+            class="logo"
+            style="width:100%;height:100%"
+            src="/images/setuser.jpg"
+            mode="aspectFit"
+          ></image>
+        </view>
+        <navigator url="/pages/public/enroll/enroll">
+          登录/注册
+          <van-icon name="arrow" />
+        </navigator>
+      </view>
+    </view>
+    <view class="weui-cells">
+      <van-cell
+        title="我的浏览记录"
+        is-link="true"
+        url="/pages/public/myprofile/my-access-logs/my-access-logs"
+      />
+      <van-cell
+        title="我关注的二手房"
+        is-link="true"
+        url="/pages/public/myprofile/my-favorite-ershoufang/my-favorite-ershoufang"
+      />
+      <van-cell
+        title="我的委托"
+        is-link="true"
+        url="/pages/public/myprofile/my-entrusted-housing/my-entrusted-housing"
+      />
+    </view>
+    <view class="weui-panel" wx:if="{{token}}">
+      <view class="weui-panel weui-panel_access">
+        <view class="weui-panel__bd_btns">
+          <view class="weui-media-box weui-media-box_appmsg">
+            <view>
+              <button class="weui-btn weui-btn_primary" bindtap="Logout">退出登录</button>
+              <button
+                wx:if="{{isAgent}}"
+                class="weui-btn weui-btn_common"
+                bindtap="toErpView"
+              >
+                微信端管理系统
+              </button>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+

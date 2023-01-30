@@ -1,0 +1,215 @@
+.user-view {
+  width: 100vw;
+  display: flex;
+}
+
+.weui-article {
+  padding: 20px 16px;
+  font-size: 17px;
+  color: rgba(0, 0, 0, 0.9);
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.weui-cells {
+  margin-top: 8px;
+  background-color: #fff;
+  line-height: 1.41176471;
+  font-size: 17px;
+  overflow: hidden;
+  position: relative;
+}
+
+.weui-panel {
+  background-color: #fff;
+  margin-top: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.weui-media-box {
+  padding: 12px;
+  position: relative;
+}
+
+.weui-media-box__title {
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.4;
+  color: rgba(0, 0, 0, 0.9);
+  width: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.weui-media-box__info {
+  margin-top: 10px;
+  padding-bottom: 4px;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.3);
+  line-height: 1em;
+  list-style: none;
+  overflow: hidden;
+  float: left;
+  width: 300px;
+}
+
+.weui-media-box__info__meta {
+  padding-right: 1em;
+}
+
+.weui-media-box_get_phone_btn {
+  margin-left: 0;
+  width: 92px;
+  padding: 0;
+  font-size: 10px;
+  background: transparent;
+}
+
+.weui-media-box_appmsg {
+  display: flex;
+  align-items: center;
+
+}
+
+.weui-media-box__hd {
+  margin-right: 16px;
+  width: 80px;
+  height: 80px;
+  line-height: 60px;
+  text-align: center;
+}
+
+.weui-media-box__thumb {
+  width: 100%;
+  max-height: 100%;
+  vertical-align: top;
+}
+
+.weui-media-box__bd {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.button {
+  margin: 15px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.van-normal {
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.spnlist {
+  margin: 0 31.5px;
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.spdlist {
+  margin: 0 40px;
+  font-weight: 700;
+  font-size: 17px;
+  color: #06ae56;
+}
+
+.spblist {
+  margin: 0 23px;
+  font-weight: 700;
+  font-size: 17px;
+  color: #06ae56;
+}
+
+button.weui-btn,
+input.weui-btn {
+  border-width: 0;
+  outline: 0;
+  -webkit-appearance: none;
+}
+
+.weui-btn_primary {
+  background-color: #07c160;
+  color: #fff;
+}
+
+.weui-btn_common {
+  background-color: #fff;
+  color: #06ae56
+}
+
+.weui-btn {
+  position: relative;
+  display: block;
+  width: 184px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 8px 24px;
+  box-sizing: border-box;
+  font-weight: 700;
+  font-size: 17px;
+  text-align: center;
+  text-decoration: none;
+  line-height: 1.41176471;
+  border-radius: 4px;
+  overflow: hidden;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.my-profile {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 8px;
+
+  --cell-group-inset-padding: 8px 0px;
+}
+
+.userinfo-container {
+  width: 100%;
+}
+
+.userinfo-container .userinfo-group {
+  --cell-group-inset-padding: 0px 0px;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: row;
+  color: #aaa;
+  margin-top: 16rpx;
+  margin-bottom: 16rpx;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  overflow: hidden;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.profile-menu-title {
+  margin-left: 5px;
+}
+
+.weui-panel__bd_btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.logout-btn {
+  margin: 40rpx 0px;
+}
