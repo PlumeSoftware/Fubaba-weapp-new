@@ -1,0 +1,69 @@
+<view class="index">
+  <view class="home-swiper">
+    <view class="swiper-container">
+      <view class="swiper-slide">
+        <image src="../../../images/index_bg.png" />
+      </view>
+    </view>
+  </view>
+  <view class="search-container">
+    <view class="weui-search-bar fubaba-search-bar">
+      <view class="search-addon">
+        <van-icon name="volume-o" size="20px" />
+      </view>
+      <form class="weui-search-bar__form" bindsubmit="_onSubmit">
+        <view class="weui-search-bar__box">
+          <input
+            type="search"
+            autocomplete="off"
+            placeholder="欢迎来到富爸爸选房!"
+            class="weui-search-bar__input blink"
+            disabled="disabled"
+          />
+        </view>
+      </form>
+      <view class="search-addon" bindtap="changeCity">
+        <view class="search-city">
+          <i class="location">
+            <van-icon name="location-o" size="20px" />
+          </i>
+          <span>{{citySelect == 'dl' ? '大连' : '庄河' }}</span>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="weui-grids">
+    <div
+      bindtap="erShouFang"
+      class="weui-grid"
+      open-type="redirect"
+    >
+      <view class="weui-grid__icon">
+        <image src="../../../images/public/sale_house.png"></image>
+      </view>
+      <p class="weui-grid__label">购房</p>
+    </div>
+
+    <!-- <div bindtap="xinFang" class="weui-grid" open-type="redirect"> -->
+    <div
+      bindtap="rentHouse"
+      class="weui-grid"
+      open-type="redirect"
+    >
+      <view class="weui-grid__icon">
+        <image src="../../../images/public/rent_house.png"></image>
+      </view>
+      <p class="weui-grid__label">租房</p>
+    </div>
+
+  </view>
+  <view class="weui-panel weui-panel_access housing-list ">
+    <view class="weui-panel__hd">推荐房源</view>
+    <view class="weui-panel__bd">
+      <view wx:for="{{ershoufangSellingInfos}}" wx:key="index">
+        <house-list-item sellingHouse="{{item}}"></house-list-item>
+      </view>
+    </view>
+  </view>
+</view>
+
