@@ -1,0 +1,143 @@
+.house-box {
+  display: flex;
+  align-items: flex-start;
+}
+
+.house-box .weui-media-box__hd {
+  margin-right: 32rpx;
+  width: 6.75rem;
+  height: 5.25rem;
+  line-height: 5.25rem;
+  text-align: center;
+}
+
+.house-box.house-title {
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 32rpx;
+}
+
+.house-box .house-desc {
+  font-size: 24rpx;
+}
+
+.house-box .house-tags {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0;
+  overflow: hidden;
+  margin-bottom: 5px;
+  margin-top: 4px;
+}
+
+.house-box .house-tags .tag {
+  float: left;
+  height: 16px;
+  line-height: 16px;
+  color: #849aae;
+  border-radius: 0.533vw;
+  padding: 0 3px;
+  background: #edf0f3;
+  margin-right: 5px;
+  margin-bottom: 3px;
+}
+
+.house-box .house-price .price-total .unit {
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: -0.14px;
+}
+
+.house-box .house-price .price-unit {
+  font-size: 12rpx;
+  color: #9399a5;
+  letter-spacing: 0;
+}
+
+video {
+  display: block;
+  height: 168rpx;
+  width: 216rpx;
+}
+
+/*  */
+.weui-media-box__hd {
+  width: 216rpx;
+  height: 168rpx;
+  margin-bottom: 10rpx;
+  float: left;
+}
+
+.weui-media-box__hd image {
+  width: 216rpx;
+  height: 168rpx;
+}
+a.weui-media-box:active {
+  background-color: #ececec;
+}
+.weui-media-box__title {
+  font-weight: 400;
+  font-size: 34rpx;
+  line-height: 1.4;
+  color: rgba(0, 0, 0, 0.9);
+  width: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+.weui-media-box__desc {
+  color: rgba(0, 0, 0, 0.3);
+  font-size: 28rpx;
+  line-height: 1.4;
+  padding-top: 8rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+.house-box .house-price .price-total {
+  color: #fa5741;
+  margin-right: 16rpx;
+}
+.house-box .house-price .price-total .unit {
+  font-weight: 700;
+  font-size: 24rpx;
+  letter-spacing: -0.14px;
+}
+.house-box .house-price .price-unit {
+  font-size: 24rpx;
+  color: #9399a5;
+  letter-spacing: 0;
+}
+.house-box .house-tags {
+  font-size: 20rpx;
+  font-weight: 700;
+  letter-spacing: 0;
+  overflow: hidden;
+  margin-bottom: 10rpx;
+  margin-top: 8rpx;
+}
+.house-box .house-title {
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 16px;
+}
+.house-box .house-tags .tag {
+  float: left;
+  height: 32rpx;
+  line-height: 32rpx;
+  color: #849aae;
+  border-radius: 0.533vw;
+  padding: 0 6rpx;
+  background: #edf0f3;
+  margin-right: 10rpx;
+  margin-bottom: 6rpx;
+}

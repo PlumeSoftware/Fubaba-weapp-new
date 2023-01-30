@@ -1,0 +1,58 @@
+<view bindtap="onclickHouseDetails" class="weui-media-box weui-media-box_appmsg house-box">
+  <view class="weui-media-box__hd">
+    <ng-container wx:if="{{picture.picture_name}}">
+      <ng-template>
+        <image
+          class="weui-media-box__thumb"
+          src="{{husPictureRootPath}}{{picture.picture_name}}"
+          binderror="errorLoadCover"
+          data-errorimg="{{picture.picture_name}}"
+        />
+      </ng-template>
+    </ng-container>
+    <ng-container wx:if="{{!picture.picture_name}}">
+      <image class="weui-media-box__thumb" src="../../images/logo.png" />
+    </ng-container>
+  </view>
+  <view class="weui-media-box__bd">
+    <h4 class="weui-media-box__title house-title">{{ sellingHouse.housing.hus_build_name}}</h4>
+    <p class="weui-media-box__desc house-desc">
+      <span wx:if="{{sellingHouse.housing.hus_rooms!='0'}}">
+        {{ sellingHouse.housing.hus_rooms}}室
+      </span>
+      <span wx:if="{{sellingHouse.housing.hus_halls!='0'}}">
+        {{ sellingHouse.housing.hus_halls}}厅
+      </span>
+      <span wx:if="{{sellingHouse.housing.hus_area!='null'}}">
+        {{ sellingHouse.housing.hus_area}}㎡
+      </span>
+      <span>{{ sellingHouse.housing.hus_expose=='null'?'':sellingHouse.housing.hus_expose}}</span>
+      <span wx:if="{{sellingHouse.housing.hus_chengqu!='null'&&sellingHouse.housing.hus_chengqu!=null}}">/{{sellingHouse.housing.hus_chengqu}}</span>
+    </p>
+    <view wx:if="{{ sellingHouse.housing.housing.hus_tags &&  sellingHouse.housing.housing.hus_tags.length}}" class="house-tags">
+      <span
+        wx:for="{{ sellingHouse.housing.housing.hus_tags}}"
+        wx:key="index"
+        class="tag"
+        title="{{husTag.tagName}}"
+        style="background-color: rgb(244, 247, 249); color: rgb(132, 154, 174);"
+      >
+        {{husTag.tagName}}
+      </span>
+    </view>
+    <view class="house-price" wx:if="{{ sellingHouse.req_type == 1 }}">
+      <span class="price-total">
+        <strong>{{ sellingHouse.req_amt}}</strong>
+        <span class="unit">万</span>
+      </span>
+      <span class="price-unit">{{ sellingHouse.req_amt3}}元/平</span>
+    </view>
+    <view class="house-price" wx:else>
+      <span class="price-total">
+        <strong>{{ sellingHouse.req_amt2}}</strong>
+        <span class="unit">元/月</span>
+      </span>
+    </view>
+  </view>
+</view>
+
