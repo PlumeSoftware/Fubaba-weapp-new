@@ -2,15 +2,19 @@
 /* eslint-disable object-curly-spacing */
 /* eslint-disable @typescript-eslint/comma-dangle */
 /* eslint-disable promise/always-return */
-import { webGet } from '../../../utils/http';
-
 Page({
   data: {
     show: false,
     columsCityCode: ['dl', 'zh'],
     columns: ['大连', '庄河'],
-    city: wx.getStorageSync("city"),
-    housingCity: wx.getStorageSync("city") ? wx.getStorageSync("city") : 'dl'
+    city: getApp().global.code,
+    housingCity: getApp().global.city,
+
+    housingEstate:'',
+    housingAddress:'',
+    housingArea:'',
+    expectedPrice:'',
+    yourname:''
   },
   onLoad() {
     wx.showShareMenu({
@@ -22,21 +26,7 @@ Page({
       housingCity: wx.getStorageSync("city")
     });
   },
-  // onDisplay() {
-  //   this.setData({ show: true });
-  // },
-  // onConfirm(event: any) {
-  //   const { picker, value, index } = event.detail;
-  //   this.setData({
-  //     housingCity: this.data.columsCityCode[index],
-  //     show: false
-  //   });
-  // },
-  // onCancel() {
-  //   this.setData({
-  //     show: false
-  //   });
-  // },
+
   onSubmit() {
     this.data.city = this.data.housingCity;
     WxappApis.default

@@ -1,28 +1,63 @@
 <view class="weui-cells">
-  <van-cell title="城市" model:value="{{ housingCity === 'dl' ? '大连' : '庄河' }}" is-link="true" bind:click="onDisplay" />
-  <van-popup show="{{ show }}" position="bottom">
-    <van-picker show="{{ show }}" columns="{{ columns }}" bind:change="onChange" bind:cancel="onCancel" bind:confirm="onConfirm" show-toolbar />
-  </van-popup>
+  <van-cell title="城市" model:value="{{ housingCity }}" />
   <van-cell-group>
-    <van-field label="小区名称" model:value="{{ housingEstate }}" placeholder="请输入小区名称" border="{{ false }}" />
+    <van-field
+      label="小区名称"
+      model:value="{{ housingEstate }}"
+      placeholder="请输入小区名称"
+      border="{{ false }}"
+    />
   </van-cell-group>
   <van-cell-group>
-    <van-field rows="4" model:value="{{ housingAddress }}" autosize="200" label="详细地址" type="textarea" maxlength="200" placeholder="请输入详细地址" show-word-limit="true" id="test"></van-field>
+    <van-field
+      rows="4"
+      model:value="{{ housingAddress }}"
+      autosize="200"
+      label="详细地址"
+      type="textarea"
+      maxlength="200"
+      placeholder="请输入详细地址"
+      show-word-limit="true"
+      id="test"
+    ></van-field>
   </van-cell-group>
   <van-cell-group>
-    <van-field label="房屋面积(㎡)" model:value="{{ housingArea }}" placeholder="请输入房屋面积" border="{{ false }}" required="true" />
+    <van-field
+      label="房屋面积(㎡)"
+      model:value="{{ housingArea }}"
+      placeholder="请输入房屋面积"
+      border="{{ false }}"
+      required="true"
+    />
   </van-cell-group>
   <van-cell-group>
-    <van-field label="期望售价(万元)" model:value="{{ expectedPrice }}" placeholder="请输入期望售价" border="{{ false }}" required="true" />
+    <van-field
+      label="期望售价(万元)"
+      model:value="{{ expectedPrice }}"
+      placeholder="请输入期望售价"
+      border="{{ false }}"
+      required="true"
+    />
   </van-cell-group>
   <van-cell-group>
-    <van-field label="您的称呼" model:value="{{ yourname }}" placeholder="请输入您的称呼" border="{{ false }}" />
+    <van-field
+      label="您的称呼"
+      model:value="{{ yourname }}"
+      placeholder="请输入您的称呼"
+      border="{{ false }}"
+    />
   </van-cell-group>
   <view class="weui-media-box">
     <view class="van-normal">
-      <van-button type="primary" block color="#07c160" bind:click="onSubmit">
+      <van-button
+        type="primary"
+        block
+        color="#07c160"
+        bind:tap="onSubmit"
+      >
         <span class="spnlist" style="color:#fff">确认</span>
       </van-button>
     </view>
   </view>
 </view>
+
