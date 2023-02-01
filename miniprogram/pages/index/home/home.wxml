@@ -27,7 +27,7 @@
           <i class="location">
             <van-icon name="location-o" size="20px" />
           </i>
-          <span>{{citySelect == 'dl' ? '大连' : '庄河' }}</span>
+          <span>{{cityName}}</span>
         </view>
       </view>
     </view>
