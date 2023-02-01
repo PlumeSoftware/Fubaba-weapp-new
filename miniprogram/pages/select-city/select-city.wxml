@@ -1,0 +1,24 @@
+<view class="content">
+  <view>
+    <view class="label">当前城市</view>
+    <view class="city-list">
+      <p class="city">{{ city }}</p>
+      <p class="city-empty"></p>
+    </view>
+  </view>
+  <view>
+    <view class="label">可选城市</view>
+    <view class="city-list">
+      <view
+        class="city"
+        wx:for="{{ cities }}"
+        wx:key="index"
+        bind:tap="changeCity"
+        data-code="{{item.code}}"
+      >
+        <p>{{ item.city}}</p>
+      </view>
+    </view>
+  </view>
+</view>
+
