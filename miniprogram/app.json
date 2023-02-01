@@ -1,7 +1,9 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/house-details/house-details"
+    "pages/house-details/house-details",
+    "pages/enroll/enroll",
+    "pages/select-city/select-city"
   ],
   "window": {
     "backgroundTextStyle": "light",
