@@ -6,13 +6,13 @@
     animated
   >
     <van-tab>
-      <home wx:if="{{active==0}}"></home>
+      <home></home>
     </van-tab>
     <van-tab>
-      <selling wx:if="{{active==1}}"></selling>
+      <selling></selling>
     </van-tab>
     <van-tab>
-      <user wx:if="{{active==2}}"></user>
+      <user></user>
     </van-tab>
   </van-tabs>
   <van-tabbar

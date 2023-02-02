@@ -1,0 +1,31 @@
+.content{
+  padding: 3vh 5vw;
+  height: 93vh;
+}
+
+.label{
+  height: 5vh;
+  font-size: 36rpx;
+  font-weight: 600;
+}
+
+.city-list{
+  display: flex;
+  justify-content: space-around;
+  width: 90vw;
+  margin-bottom: 10vw;
+}
+.city{
+  height: 12vw;
+  width: 35vw;
+  line-height: 11.5vw;
+  text-align: center;
+  border: 1px solid #4d4d4d;
+  border-radius: 20rpx;
+  margin: 2vw 0;
+}
+
+.city-empty{
+  height: 12vw;
+  width: 35vw;
+}

@@ -28,7 +28,7 @@ Component({
 
       this.setData({
         model: model.join(' '),
-        husPictureRootPath: 'http://haomai.51fubaba.com/picture/house_picture/',
+        husPictureRootPath: getApp().global.picturePath,
         picture: this.properties.sellingHouse.housing.pictures[0]
       });
     },
