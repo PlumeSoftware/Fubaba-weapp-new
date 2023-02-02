@@ -14,17 +14,9 @@
             </view>
           </view>
           <view class="weui-media-box__bd">
-            <h4 class="weui-media-box__title">{{ nickname }}</h4>
+            <h4 class="weui-media-box__title">{{ userInfo.name}}</h4>
             <ul class="weui-media-box__info">
-              <li class="weui-media-box__info__meta" wx-if="{{phoneNumber}}">{{ phoneNumber }}</li>
-              <button
-                class="weui-media-box_get_phone_btn"
-                wx-if="{{!phoneNumber}}"
-                open-type="getPhoneNumber"
-                bindgetphonenumber="getUserProfile"
-              >
-                点击绑定手机号
-              </button>
+              <li class="weui-media-box__info__meta">{{ userInfo.phone }}</li>
             </ul>
           </view>
           <view wx:if="{{isAgent}}" bind:tap="toProfilePage">
@@ -49,7 +41,7 @@
             mode="aspectFit"
           ></image>
         </view>
-        <navigator url="/pages/public/enroll/enroll">
+        <navigator url="/pages/enroll/enroll">
           登录/注册
           <van-icon name="arrow" />
         </navigator>
@@ -75,17 +67,15 @@
     <view class="weui-panel" wx:if="{{token}}">
       <view class="weui-panel weui-panel_access">
         <view class="weui-panel__bd_btns">
-          <view class="weui-media-box weui-media-box_appmsg">
-            <view>
-              <button class="weui-btn weui-btn_primary" bindtap="Logout">退出登录</button>
-              <button
-                wx:if="{{isAgent}}"
-                class="weui-btn weui-btn_common"
-                bindtap="toErpView"
-              >
-                微信端管理系统
-              </button>
-            </view>
+          <view>
+            <button class="weui-btn weui-btn_primary" bindtap="logout">退出登录</button>
+            <button
+              wx:if="{{erptoken}}"
+              class="weui-btn weui-btn_common"
+              bindtap="toErpView"
+            >
+              微信端管理系统
+            </button>
           </view>
         </view>
       </view>

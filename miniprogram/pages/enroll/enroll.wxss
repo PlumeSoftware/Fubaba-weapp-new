@@ -1,0 +1,36 @@
+.login-box .logo {
+  width: 110px;
+  height: 110px;
+  margin: 64rpx 275rpx;
+}
+.login-box .title {
+  margin: 64rpx 0 0 32rpx;
+  color: #333;
+  font-size: 36rpx;
+}
+.login-box .profile {
+  margin: 32rpx 0 0 32rpx;
+  color: #999;
+  font-size: 28rpx;
+}
+
+.login-box .btn {
+  margin: 88rpx 32rpx;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #aaa;
+  margin-top: 64rpx;
+  margin-bottom: 64rpx;
+}
+
+.userinfo-avatar {
+  overflow: hidden;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
