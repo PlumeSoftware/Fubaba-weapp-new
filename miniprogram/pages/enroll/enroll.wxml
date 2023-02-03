@@ -1,0 +1,23 @@
+<view class="login-box">
+  <block wx:if="{{canIUseOpenData}}">
+    <view class="userinfo">
+      <view class="userinfo-avatar">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <open-data type="userNickName"></open-data>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="kit">
+      <image class="logo" src="/images/nologin.png"></image>
+    </view>
+  </block>
+  <van-divider customStyle="padding: 0 28rpx;" />
+  <view class="title">申请获取以下权限</view>
+  <view class="profile">获得你的手机号</view>
+  <view class="btn">
+    <van-button type="primary" disabled="{{submitted}}" open-type="getPhoneNumber" block round  bindgetphonenumber="getUserInfo">
+      授权登录
+    </van-button>
+  </view>
+</view>
