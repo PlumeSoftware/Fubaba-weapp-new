@@ -10,24 +10,19 @@ import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 
 Page({
   data: {
-    showMap: false,
-    covers: [
-      {
-        latitude: 23.099994,
-        longitude: 113.30452,
-        iconPath: '../../../images/location.png'
-      }
-    ],
-    showShare: false,
-    attentioned: false,
-    ad_remark: [] as string[],
+    attentioned: false,//是否已关注
+    
     imgUrls: [] as string[],
-    setPhone: '',
+    
+    //分享时的参数
     shareTitle: '',
     shareUrl: '',
     shareObject: {},
+    
+    //图片banner显示
     indicatorDots: true,
-    existVr: false,
+    
+    existVr: false,//是否存在vr
     open: false,
     //房源类型，1-二手房 0-租房
     req_type: 1,
@@ -36,6 +31,7 @@ Page({
     housing: {} as any, //房源详细信息
     picture: {} as any, //房源图片
     agent: {} as any,// 经纪人信息
+    ad_remark: [] as string[],
 
     doingAttention: false,//是否已关注
 
@@ -73,7 +69,7 @@ Page({
 
         //设置房源信息
         const imgUrlArr: string[] = [];
-        res.data.housing.pictures.forEach((item: { picture_name: string }) => imgUrlArr.push('http://haomai.51fubaba.com/picture/house_picture/' + item.picture_name));
+        res.data.housing.pictures.forEach((item: { picture_name: string }) => imgUrlArr.push(getApp().global.picturePath + item.picture_name));
 
 
         const { hus_rooms, hus_halls, hus_kitchens, hus_toilets, hus_expose, hus_build_name } = res.data.housing
