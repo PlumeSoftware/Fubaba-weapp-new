@@ -35,8 +35,6 @@
       checked="{{indicatorDots}}"
       bindchange="changeIndicatorDots"
     />
-    <!-- 如果需要分页器 -->
-    <view class="swiper-pagination"></view>
   </ng-container>
   <ng-container wx:if="{{!(housing.pictures && housing.pictures.length)}}">
     <swiper
