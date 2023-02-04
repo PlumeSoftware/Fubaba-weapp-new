@@ -16,6 +16,8 @@ App<IAppOption>({
       agent_tel: ''
     },
 
+    sharingCode: '',
+
     cities: [
       { code: 'zh', city: '庄河', api: 'https://mobile.51fubaba.cn:8443/zh-weapp', picturePath: 'https://haomai.51fubaba.com:5443/picture/house_picture/' },
       { code: 'dl', city: '大连', api: 'https://mobile.51fubaba.cn:8443/dl-weapp', picturePath: 'https://fmj.51fubaba.com:6443/picture/house_picture/' }
@@ -50,5 +52,8 @@ App<IAppOption>({
 
     const agent = wx.getStorageSync('agent');
     if (agent) this.global.agent = agent
+
+    const sharingCode = wx.getStorageSync('sharingCode');
+    if (sharingCode) this.global.sharingCode = sharingCode
   }
 })
