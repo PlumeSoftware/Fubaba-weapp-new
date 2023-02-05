@@ -1,0 +1,16 @@
+page {
+  padding: 0;
+}
+.main{
+  background-color:ghostwhite;
+}
+.share-image {
+  width: 100vw;
+  height: 100vh;
+}
+
+.btn {
+  position: fixed;
+  z-index: 99;
+  bottom: 10vh;
+}
