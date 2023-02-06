@@ -1,0 +1,102 @@
+<view class="main-container">
+  <van-tabs>
+    <van-tab title="二手房">
+      <article class="weui-article" wx:if="{{ershoufangAccessLogsGroup.length === 0}}">
+        <van-empty description="没有访问记录" />
+      </article>
+      <view wx:for="{{ershoufangAccessLogsGroup}}" wx:key="index" data-item="{{item}}" data-index="{{index}}">
+        <view class="weui-panel weui-panel_access housing-list" wx:if="{{ershoufangAccessLogsGroup}}">
+          <view class="weui-panel__hd">{{item.access_date}}</view>
+          <view class="weui-panel__bd">
+            <navigator bindtap="onClickAccessLog" data-item="{{item}}" data-index="{{index}}" class="weui-media-box weui-media-box_appmsg house-box">
+              <view class="weui-media-box__hd">
+                <view>
+                  <ng-container wx:if="{{item.sellingInfo.housing.pictures[0].picture_name}}">
+                    <image wx:if="{{item.sellingInfo.housing.pictures[0].info_type == 1}}" class="weui-media-box__thumb" src="{{husPictureRootPath}}{{item.sellingInfo.housing.pictures[0].picture_name}}" />
+                    <ng-template>
+                      <video wx:if="{{item.sellingInfo.housing.pictures[0].info_type == 2}}" class="weui-media-box__thumb" src="{{husPictureRootPath}}{{item.sellingInfo.housing.pictures[0].picture_name}}"></video>
+                    </ng-template>
+                  </ng-container>
+                </view>
+              </view>
+              <ng-container wx:if="{{!item.sellingInfo.housing.pictures[0].picture_name}}">
+                <image class="weui-media-box__thumb" src="../../../../images/logo.png" alt="{{item.sellingInfo.housing.hus_build_name}}" />
+              </ng-container>
+              <view class="weui-media-box__bd">
+                <h4 class="weui-media-box__title house-title">
+                  {{item.sellingInfo.housing.hus_build_name}} {{model}} {{item.sellingHouse.housing.hus_expose?item.sellingHouse.housing.hus_expose : ''}}
+                </h4>
+                <p class="weui-media-box__desc house-desc">
+                  {{item.sellingInfo.housing.hus_rooms}}室{{item.sellingInfo.housing.hus_halls}}厅 {{item.sellingInfo.housing.hus_area }}㎡ {{accessLog.sellingInfo.housing.hus_expose}} / {{accessLog.sellingInfo.housing.hus_chengqu}}
+                </p>
+                <view wx:if="{{accessLog.sellingInfo.housing.hus_tags && accessLog.sellingInfo.housing.hus_tags.length}}" class="house-tags">
+                  <span wx:for="{{accessLog.sellingInfo.housing.hus_tags}}" wx:key="index" class="tag" title="{{husTag.tagName}}" style="background-color: rgb(244, 247, 249); color: rgb(132, 154, 174);">
+                    {{item.tagName}}
+                  </span>
+                </view>
+                <view class="house-price">
+                  <span class="price-total">
+                    <strong>{{item.sellingInfo.req_amt}}</strong>
+                    <span class="unit">万</span>
+                  </span>
+                  <span class="price-unit">{{item.sellingInfo.req_amt3}}元/平</span>
+                </view>
+              </view>
+            </navigator>
+          </view>
+        </view>
+      </view>
+    </van-tab>
+    <van-tab title="租房">
+      <article class="weui-article" wx:if="{{rentHouseAccessLogsGroup.length === 0}}">
+        <van-empty description="没有访问记录" />
+      </article>
+      <view wx:for="{{rentHouseAccessLogsGroup}}" wx:key="index" data-item="{{item}}" data-index="{{index}}">
+        <view class="weui-panel weui-panel_access housing-list" wx:if="{{rentHouseAccessLogsGroup}}">
+          <view class="weui-panel__hd">{{item.access_date}}</view>
+          <view class="weui-panel__bd">
+            <navigator bindtap="onClickAccessLog" data-item="{{item}}" data-index="{{index}}" class="weui-media-box weui-media-box_appmsg house-box">
+              <view class="weui-media-box__hd">
+                <view>
+                  <ng-container wx:if="{{item.sellingInfo.housing.pictures[0].picture_name}}">
+                    <image wx:if="{{item.sellingInfo.housing.pictures[0].info_type == 1}}" class="weui-media-box__thumb" src="{{husPictureRootPath}}{{item.sellingInfo.housing.pictures[0].picture_name}}" />
+                    <ng-template>
+                      <video wx:if="{{item.sellingInfo.housing.pictures[0].info_type == 2}}" class="weui-media-box__thumb" src="{{husPictureRootPath}}{{item.sellingInfo.housing.pictures[0].picture_name}}"></video>
+                    </ng-template>
+                  </ng-container>
+                </view>
+              </view>
+              <ng-container wx:if="{{!item.sellingInfo.housing.pictures[0].picture_name}}">
+                <image class="weui-media-box__thumb" src="../../../../images/logo.png" alt="{{item.sellingInfo.housing.hus_build_name}}" />
+              </ng-container>
+              <view class="weui-media-box__bd">
+                <h4 class="weui-media-box__title house-title">
+                  {{item.sellingInfo.housing.hus_build_name}} {{model}} {{item.sellingHouse.housing.hus_expose?item.sellingHouse.housing.hus_expose : ''}}
+                </h4>
+                <p class="weui-media-box__desc house-desc">
+                  {{item.sellingInfo.housing.hus_rooms}}室{{item.sellingInfo.housing.hus_halls}}厅 {{item.sellingInfo.housing.hus_area }}㎡ {{accessLog.sellingInfo.housing.hus_expose}} / {{accessLog.sellingInfo.housing.hus_chengqu}}
+                </p>
+                <view wx:if="{{accessLog.sellingInfo.housing.hus_tags && accessLog.sellingInfo.housing.hus_tags.length}}" class="house-tags">
+                  <span wx:for="{{accessLog.sellingInfo.housing.hus_tags}}" wx:key="index" class="tag" title="{{husTag.tagName}}" style="background-color: rgb(244, 247, 249); color: rgb(132, 154, 174);">
+                    {{item.tagName}}
+                  </span>
+                </view>
+                <view class="house-price">
+                  <span class="price-total">
+                    <strong>{{item.sellingInfo.req_amt2}}</strong>
+                    <span class="unit">元/月</span>
+                  </span>
+                </view>
+              </view>
+            </navigator>
+          </view>
+        </view>
+      </view>
+    </van-tab>
+    <!-- <van-tab title="新房">
+      <article class="weui-article">
+        <van-empty description="没有访问记录" />
+      </article>
+    </van-tab> -->
+  </van-tabs>
+</view>
