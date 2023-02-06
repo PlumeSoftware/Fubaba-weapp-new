@@ -10,8 +10,6 @@ import { UserInfo } from "../../entity/user";
 /* eslint-disable @typescript-eslint/comma-dangle */
 Page({
   data: {
-    isAuth: false, // 是否授权
-    // 用户信息
     token: wx.getStorageSync('token')
   },
 

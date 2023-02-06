@@ -1,6 +1,6 @@
 export const webGet = async function <T>(url: string, params: any = new Object()): Promise<T> {
     const keys: string[] = Object.keys(params);
-    url = getApp().get('api') + url + '?'
+    url = getApp().get('api') + url + (params ? '?' : '')
     keys.forEach(key => {
         url = url + key + '=' + params[key] + '&'
     })

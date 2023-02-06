@@ -10,11 +10,8 @@ App<IAppOption>({
     api: 'https://mobile.51fubaba.cn:8443/zh-weapp',
     picturePath: 'https://haomai.51fubaba.com:5443/picture/house_picture/',
 
-    agent: {
-      agent_user_id: '',
-      agent_real_name: '',
-      agent_tel: ''
-    },
+    agent_real_name: '',
+    agent_tel: '',//经纪人自带该字段；若普通用户存在该字段则表示绑定
 
     sharingCode: '',
 
@@ -50,8 +47,11 @@ App<IAppOption>({
     const token = wx.getStorageSync('token')
     if (token) this.global.token = token
 
-    const agent = wx.getStorageSync('agent');
-    if (agent) this.global.agent = agent
+    const erptoken = wx.getStorageSync('erptoken')
+    if (erptoken) this.global.erptoken = erptoken
+
+    const agent_tel = wx.getStorageSync('agent_tel');
+    if (agent_tel) this.global.agent_tel = agent_tel
 
     const sharingCode = wx.getStorageSync('sharingCode');
     if (sharingCode) this.global.sharingCode = sharingCode
