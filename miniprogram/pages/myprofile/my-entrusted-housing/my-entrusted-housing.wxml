@@ -1,0 +1,47 @@
+<view class="main-container">
+  <article class="weui-article" wx:if="{{housing.length == 0}}">
+     <van-empty description="您还没有发起过委托" />
+  </article>
+  <ng-container wx:if="{{housing && housing.length > 0}}">
+    <view wx:for="{{housing}}" wx:key="index">
+      <view class="weui-form-preview">
+        <view class="weui-form-preview__hd">
+          <view class="weui-form-preview__item">
+            <label class="weui-form-preview__label">期望售价</label>
+            <em class="weui-form-preview__value">{{ item.expected_price}}万</em>
+          </view>
+        </view>
+        <view class="weui-form-preview__bd">
+          <view class="weui-form-preview__item">
+            <label class="weui-form-preview__label">城市</label>
+            <span class="weui-form-preview__value">
+              {{item.housing_city === 'DL' ? '大连' : '庄河' }}
+            </span>
+          </view>
+          <view class="weui-form-preview__item">
+            <label class="weui-form-preview__label">小区名称</label>
+            <span class="weui-form-preview__value">{{item.housing_estate}}</span>
+          </view>
+          <view class="weui-form-preview__item">
+            <label class="weui-form-preview__label">详细地址</label>
+            <span class="weui-form-preview__value">{{item.housing_address}}</span>
+          </view>
+          <view class="weui-form-preview__item">
+            <label class="weui-form-preview__label">房屋面积</label>
+            <span class="weui-form-preview__value">{{item.housing_area }}㎡</span>
+          </view>
+          <view class="weui-form-preview__item">
+            <label class="weui-form-preview__label">发布时间</label>
+            <span class="weui-form-preview__value">{{dateStr}}</span>
+          </view>
+        </view>
+        <view class="weui-form-preview__ft">
+          <view class="weui-form-preview__btn weui-form-preview__btn_primary"  bindtap="cancelEntrust" data-item="{{item}}">
+            取消委托
+          </view>
+        </view>
+      </view>
+      <br />
+    </view>
+  </ng-container>
+</view>
