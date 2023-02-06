@@ -1,0 +1,8 @@
+<view class="qr" scroll="no">
+    <view>
+        <image show-menu-by-longpress='1' src="{{url}}" binderror="getNewQrPic"></image>
+    </view>
+    <view class="save-tip">
+        长按保存经纪人二维码
+    </view>
+</view>
