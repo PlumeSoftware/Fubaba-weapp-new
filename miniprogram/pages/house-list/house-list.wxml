@@ -1,0 +1,191 @@
+<view class="ershoufang-filter-bar">
+  <view class="ershoufang-page__filter-tab">
+    <van-sticky offset-top="{{0}}">
+      <view class="search-container">
+        <view class="weui-search-bar fubaba-search-bar">
+          <view class="search-addon">
+            <van-icon name="search" size="15px" />
+          </view>
+          <form class="weui-search-bar__form" bindsubmit="_onSubmit">
+            <view class="weui-search-bar__box">
+              <i class="weui-icon-search"></i>
+              <input
+                type="search"
+                autocomplete="off"
+                placeholder="{{keyword}}"
+                name="q"
+                value="{{_q}}"
+                class="weui-search-bar__input"
+                bind:focus="onFouse"
+              />
+            </view>
+          </form>
+          <view class="search-addon">
+            <view class="search-city">
+              <i class="location">
+                <van-icon
+                  name="location-o"
+                  size="20px"
+                  bindtap="onCilkCity"
+                />
+              </i>
+              <span>{{citySelect === 'dl' ? '大连' : '庄河' }}</span>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view>
+        <view class="tab-container" style="transform: translateZ(0px);">
+          <view class="kem__tab-bar">
+            <ul class="tab-arrow">
+              <li
+                bindtap="onFilterTabItemClick"
+                wx:for="{{filterTabsMetadata}}"
+                wx:key="index"
+                data-index="{{index}}"
+                data-item="{{item}}"
+                class="tab-item {{activeTabIndex == index||queryCriteria.filters[item.name].length ? 'active-show' : ''}}{{item.active? 'active': ''}} {{ filterTabsMetadata[index].chose?'active-show':''}}"
+              >
+                <span wx:if="{{queryCriteria.filters[item.name].length<2||index>=3}}">
+                  {{item.label}}
+                </span>
+                <span wx:elif="{{index<3}}">多选</span>
+              </li>
+            </ul>
+          </view>
+        </view>
+      </view>
+    </van-sticky>
+    <view
+      wx:for="{{filterTabsMetadata}}"
+      wx:for-item="tab"
+      wx:key="index"
+    >
+      <view wx:if="{{open}}" class="panel-container {{activeTabName===tab.name? 'panel-mask': '' }}">
+        <view class="conch-ui-filter-range-check conch-ui-ke" class="{{activeTabName===tab.name?'show':'hide'}}">
+          <!-- 普通面板 -->
+          <view class="conch-ui-filter-panel conch-ui-ke" wx:if="{{index!=4}}">
+            <view class="conch-ui-main-container">
+              <view class="conch-ui-multiple-item">
+                <!-- 针对价格筛选的面板 -->
+                <view wx:if="{{index==0}}">
+                  <view class="conch-ui-check-title-first">价格区间（万）</view>
+                  <view class="conch-ui-check-range">
+                    <input
+                      type="number"
+                      class="conch-ui-input"
+                      placeholder="最低价格"
+                      model:value="{{filtersFormdata.priceLeast}}"
+                      bindinput="_onInputPriceStart"
+                    />
+                    <span class="conch-ui-connect">至</span>
+                    <input
+                      type="number"
+                      class="conch-ui-input"
+                      placeholder="最高价格"
+                      model:value="{{filtersFormdata.priceMax	}}"
+                      bindinput="_onInputPriceEnd"
+                    />
+                  </view>
+                </view>
+                <!-- 通用显示面板 -->
+                <view class="conch-ui-check-items">
+                  <view
+                    wx:for="{{filtersFormdata[tab.name].options}}"
+                    wx:key="index"
+                    data-item="{{item}}"
+                    data-filtername="{{tab.name}}"
+                    data-index="{{index}}"
+                    bindtap="_onCheckItemClick"
+                    class="conch-ui-check-item {{item.checked? 'conch-ui-active' : ''}} "
+                  >
+                    {{ item.label }}
+                  </view>
+                </view>
+                <!-- 更多显示面板 -->
+                <view
+                  wx:if="{{index==3}}"
+                  wx:for="{{[filtersFormdata['houseTags'],filtersFormdata['chaoxiangs'],filtersFormdata['floorLevels'],filtersFormdata['houseAges'],filtersFormdata['husFitment'],filtersFormdata['usage'],filtersFormdata['jiegous']]}}"
+                  wx:for-item="itm"
+                  wx:for-index="idx"
+                  wx:key="idx"
+                >
+                  <view class="conch-ui-check-title">{{itm.tag}}</view>
+                  <view style="min-height:15vh" class="conch-ui-check-items">
+                    <view
+                      data-filtername="{{itm.name}}"
+                      wx:for="{{itm.options}}"
+                      wx:key="index"
+                      data-index="{{index}}"
+                      data-item="{{item}}"
+                      class="conch-ui-check-item {{item.checked? 'conch-ui-active' : ''}}"
+                      bindtap="_onCheckItemClick"
+                    >
+                      {{ item.label}}
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <!-- 工具栏 -->
+            <view class="conch-ui-ctrl-bar">
+              <view
+                class="conch-ui-reset-button"
+                data-filtername="{{tab.name}}"
+                bindtap="_onClearFilterChecks"
+              >
+                <i class="conch-ui-icon"></i>
+                <p class="conch-ui-text">重置</p>
+              </view>
+              <view class="conch-ui-search-button" bindtap="_onFilterHousingList">查看房源</view>
+            </view>
+          </view>
+          <!-- 排序面板 -->
+          <view wx:if="{{index==4}}">
+            <view
+              class="conch-ui-filter-sort-check conch-ui-ke"
+              class="{{activeTabName === 'sortMethod' ? 'show':'hide'}}"
+              style="background: #fff;"
+            >
+              <view
+                wx:for="{{filtersFormdata.sortMethod.options}}"
+                wx:key="index"
+                wx:for-index="index"
+                wx:for-item="item"
+                data-item="{{item}}"
+                data-filtername="sortMethod"
+                data-index="{{index}}"
+                bindtap="_onCheckItemClick"
+                class="conch-ui-check-item-last {{queryCriteria.sort==item.value? 'conch-ui-active' : ''}}"
+              >
+                {{ item.label}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="weui-panel weui-panel_access ">
+  <view class="weui-panel__bd">
+    <view
+      wx:if="{{ershoufangSellingInfos.length>0}}"
+      wx:for="{{ershoufangSellingInfos}}"
+      wx:key="index"
+    >
+      <house-list-item sellingHouse="{{item}}"></house-list-item>
+    </view>
+    <view wx:if="{{ershoufangSellingInfos.length==0}}">
+      <van-empty description="富爸爸选房" />
+    </view>
+  </view>
+</view>
+<view class="sideicon sideicon.icon-2">
+  <van-icon
+    name="wap-home"
+    size="25"
+    bind:click="onClickHome"
+  />
+</view>
+
