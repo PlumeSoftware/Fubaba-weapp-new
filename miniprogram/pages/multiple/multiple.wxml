@@ -1,0 +1,8 @@
+<!-- index.wxml -->
+<view class="main">
+  <image src="{{shareImage}}" class="share-image"></image>
+  <canvasdrawer painting="{{painting}}" class="canvasdrawer" bind:getImage="eventGetImage" />
+  <!-- <view class="btn">
+    <button class="btn" bind:tap="eventDraw">再绘制一次</button>
+  </view> -->
+</view>
