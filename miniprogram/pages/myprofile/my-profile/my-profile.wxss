@@ -1,0 +1,22 @@
+.qr {
+    margin: 0;
+    background: #fff;
+    height: 90vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.qr view {
+    padding-top: 10vh;
+}
+
+.qr view image {
+    width: 80vw;
+    height: 80vw;
+}
+
+.qr .save-tip {
+    color: rgba(0, 0, 0, 0.9);
+}

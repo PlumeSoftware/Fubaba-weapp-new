@@ -1,0 +1,152 @@
+
+.weui-media-box_appmsg .weui-media-box__thumb {
+ width: 100%; 
+  height:84px;
+  vertical-align: top; 
+}
+.housing-list .house-box .house-title {
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 16px;
+}
+.weui-media-box__title {
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.4;
+  color: rgba(0, 0, 0, 0.9);
+  width: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+.house-box {
+  display: flex;
+  align-items: flex-start;
+}
+.housing-list .house-box .house-desc {
+  font-size: 12px;
+}
+.weui-media-box__desc {
+  color: rgba(0, 0, 0, 0.3);
+  font-size: 14px;
+  line-height: 1.4;
+  padding-top: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+.housing-list .house-box .house-price .price-total {
+  color: #fa5741;
+  margin-right: 8px;
+}
+.housing-list .house-box .house-price .price-total .unit {
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: -0.14px;
+}
+.housing-list .house-box .house-price .price-unit {
+  font-size: 12px;
+  color: #9399a5;
+  letter-spacing: 0;
+}
+.weui-media-box:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 1px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  color:rgba(0, 0, 0, 0.1);
+  transform-origin: 0 0;
+  transform: scaleY(0.5);
+  left: 16px;
+}
+.weui-panel {
+  background-color: #fff;
+  margin-top: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.housing-list .house-box .weui-media-box__hd {
+  margin-right: 16px;
+  width: 6.75rem;
+  height: 5.25rem;
+  line-height: 5.25rem;
+  text-align: center;
+}
+.weui-media-box_appmsg .weui-media-box__thumb {
+  width: 100%;
+  max-height: 100%;
+  vertical-align: top;
+}
+.weui-media-box {
+  color: #000;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.weui-media-box_appmsg {
+  display: flex;
+  align-items: center;
+}
+.weui-media-box {
+  padding: 16px;
+  position: relative;
+}
+.weui-media-box_appmsg .weui-media-box__bd {
+  flex: 1;
+  min-width: 0;
+}
+.housing-list .house-box .house-title {
+  text-overflow: clip;
+  white-space: normal;
+  font-size: 16px;
+}
+.weui-media-box__title {
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.4;
+  color: rgba(0, 0, 0, 0.9);
+  width: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+.housing-list .house-box .house-desc{
+  font-size: 12px;
+}
+.weui-media-box__desc {
+  color:rgba(0, 0, 0, 0.3);
+  font-size: 14px;
+  line-height: 1.4;
+  padding-top: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+.housing-list .house-box .house-price .price-unit{
+  font-size: 12px;
+  color: #9399a5;
+  letter-spacing: 0;
+}
+.house-price {
+  margin-top: 5px;
+}

@@ -32,8 +32,9 @@ export const login = async function (): Promise<UserInfo> {
                 unionid: wxInfo.openid
             }
             getApp().set('erptoken', (await webPost<{ data: string }>('/api/agent/update', data)).data, true);
-            getApp().set('erptoken', (await webPost<{ data: string }>('/api/agent/update', data)).data, true);
 
+            getApp().set('agent_tel', agent.agent_tel,true)
+            getApp().set('agent_real_name', agent.agent_real_name,true)
             webGet('/api/agent/getQrPic', { city: getApp().get('city'), phone: agent.agent_tel.slice(0, 11) });
         }
     }
