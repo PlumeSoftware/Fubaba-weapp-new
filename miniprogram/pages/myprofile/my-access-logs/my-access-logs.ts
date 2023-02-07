@@ -1,13 +1,7 @@
 /* eslint-disable guard-for-in */
 /* eslint-disable object-curly-spacing */
-/* eslint-disable @typescript-eslint/no-unused-expressions */
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable promise/always-return */
-/* eslint-disable @typescript-eslint/comma-dangle */
-/* eslint-disable promise/catch-or-return */
-import { HouseInfo, ReqInfo } from '../../../../components/room-source.model';
-import * as WxappApis from '../../../../utils/api-request';
-import { Cities, City } from '../../../../utils/constants';
+
+import { webGet } from "../../../utils/http";
 
 Page({
   data: {
@@ -17,26 +11,21 @@ Page({
     rentHouseAccessLogsGroup: []
   },
   onLoad() {
-    WxappApis.default.getMyErshoufangAccessLogs().then((res1: any) => {
-
+    webGet('/api/my-access-logs/ershoufang').then((res: any) => {
+      res.data.data.forEach((i: any) => i.sellingInfo.housing.pictures[0].picture_name = getApp().global.picturePath + i.sellingInfo.housing.pictures[0].picture_name)
+      console.log(res.data.data[0].sellingInfo.housing.pictures[0])
       this.setData({
-        ershoufangAccessLogsGroup: res1.data.data
+        ershoufangAccessLogsGroup: res.data.data
       });
     });
 
-
-    WxappApis.default.getMyRentHouseAccessLogs().then((res2: any) => {
-
+    webGet('/api/my-access-logs/renthouse').then((res: any) => {
+      res.data.data.forEach((i: any) => i.sellingInfo.housing.pictures[0].picture_name = getApp().global.picturePath + i.sellingInfo.housing.pictures[0].picture_name)
       this.setData({
-        rentHouseAccessLogsGroup: res2.data.data
+        rentHouseAccessLogsGroup: res.data.data
       });
     });
 
-    const chosenCity: City = Cities.find(item => item.code == wx.getStorageSync('city').toUpperCase())!;
-
-    this.setData({
-      husPictureRootPath: chosenCity.husPictureRootPath
-    });
     wx.showShareMenu({
       withShareTicket: true,
       //menus: ['shareAppMessage', 'shareTimeline']
@@ -50,17 +39,9 @@ Page({
     });
   },
   onClickAccessLog(event: any) {
-    const AccessLog = event.currentTarget.dataset.item.sellingInfo;
-    let reqStr = '?';
-    let house: string = '';
-    for (const key in AccessLog) {
-      reqStr += `${key}=${AccessLog[key]}&`;
-    }
-    for (const key in AccessLog.housing) {
-      house = house + key + '=' + AccessLog.housing[key] + '&';
-    }
+    const accessLog = event.currentTarget.dataset.item.sellingInfo;
     wx.navigateTo({
-      url: `/pages/public/house-details/house-details?req_id=${AccessLog.req_id}`
+      url: `/pages/house-details/house-details?req_id=${accessLog.req_id}&req_type=${accessLog.req_type}`
     });
   }
 });
