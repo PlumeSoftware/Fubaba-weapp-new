@@ -1,4 +1,4 @@
 {
-  "usingComponents": {"honse-list-item": "../../component/house-list-item/house-list-item"},
+  "usingComponents": {"house-list-item": "../../component/house-list-item/house-list-item"},
   "navigationBarTitleText": "房源详情"
 }

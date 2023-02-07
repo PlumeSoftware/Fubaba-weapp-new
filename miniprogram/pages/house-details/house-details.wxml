@@ -204,7 +204,7 @@
       wx:for-item="item"
       data-index="{{index}}"
     >
-      <room-source-filter-bar sellingHouse="{{item}}"></room-source-filter-bar>
+      <house-list-item sellingHouse="{{item}}"></house-list-item>
     </ng-container>
   </view>
 </view>
@@ -230,7 +230,7 @@
           class="agent-avatar"
         >
           <image
-            src="../../../images/setuser.jpg"
+            src="../../images/setuser.jpg"
             alt="经纪人 {{ agent.agent_real_name}}}"
             class="image-size"
           ></image>
@@ -247,7 +247,7 @@
     </view>
   </view>
 </view>
-<view wx:if="{{isagent}}" class="sideicon sideicon.icon-1">
+<view wx:if="{{isAgent}}" class="sideicon sideicon.icon-1">
   <van-icon
     name="share"
     size="25"
