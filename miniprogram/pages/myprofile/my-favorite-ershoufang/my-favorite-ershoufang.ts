@@ -1,81 +1,79 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/comma-dangle */
 /* eslint-disable no-restricted-syntax */
-import * as WxappApis from '../../../../utils/api-request';
-import { Cities, City } from '../../../../utils/constants';
+
+import { webGet } from "../../../utils/http";
 
 Page({
   data: {
     fyReqId: '',
-    myFavoriteErshoufangs:[],
-    myFavoriteRentHouse:[]
+    myFavoriteErshoufangs: [],
+    myFavoriteRentHouse: []
   },
   onLoad() {
-    WxappApis.default
-      .loginMyFavorite(this.data.fyReqId)
-      .then((res: any) => {
-        this.setData({
-          myFavoriteErshoufangs: res.data
-        });
-        const myFavoriteErshoufangs = res.data;
-        // eslint-disable-next-line promise/always-return
-        for (const item of myFavoriteErshoufangs) {
-          const model = [];
-          if (item.housing.hus_rooms > 0) {
-            model.push(`${item.housing.hus_rooms}室`);
-          }
-          if (item.housing.hus_halls > 0) {
-            model.push(`${item.housing.hus_halls}厅`);
-          }
-          if (item.housing.hus_kitchens > 0) {
-            model.push(`${item.housing.hus_kitchens}厨`);
-          }
-          if (item.housing.hus_toilets > 0) {
-            model.push(`${item.housing.hus_toilets}卫`);
-          }
-          this.setData({
-            model: model.join(' ')
-          });
+    webGet('/api/my-favorite/ershoufang').then((res: any) => {
+      res.data.forEach((i: any) => i.housing.pictures[0].picture_name = getApp().global.picturePath + i.housing.pictures[0].picture_name)
+      this.setData({
+        myFavoriteErshoufangs: res.data
+      });
+      const myFavoriteErshoufangs = res.data;
+      // eslint-disable-next-line promise/always-return
+      for (const item of myFavoriteErshoufangs) {
+        const model = [];
+        if (item.housing.hus_rooms > 0) {
+          model.push(`${item.housing.hus_rooms}室`);
         }
-      })
+        if (item.housing.hus_halls > 0) {
+          model.push(`${item.housing.hus_halls}厅`);
+        }
+        if (item.housing.hus_kitchens > 0) {
+          model.push(`${item.housing.hus_kitchens}厨`);
+        }
+        if (item.housing.hus_toilets > 0) {
+          model.push(`${item.housing.hus_toilets}卫`);
+        }
+        this.setData({
+          model: model.join(' ')
+        });
+      }
+    })
       .catch((err: any) => {
         console.log(err);
       });
 
-      WxappApis.default
-      .getMyFavoriteRent(this.data.fyReqId)
-      .then((res: any) => {
-        this.setData({
-          myFavoriteRentHouse: res.data
-        });
-        const myFavoriteRentHouse = res.data;
-        // eslint-disable-next-line promise/always-return
-        for (const item of myFavoriteRentHouse) {
-          const model = [];
-          if (item.housing.hus_rooms > 0) {
-            model.push(`${item.housing.hus_rooms}室`);
-          }
-          if (item.housing.hus_halls > 0) {
-            model.push(`${item.housing.hus_halls}厅`);
-          }
-          if (item.housing.hus_kitchens > 0) {
-            model.push(`${item.housing.hus_kitchens}厨`);
-          }
-          if (item.housing.hus_toilets > 0) {
-            model.push(`${item.housing.hus_toilets}卫`);
-          }
-          this.setData({
-            model: model.join(' ')
-          });
+    webGet('/api/my-favorite/rentHouse').then((res: any) => {
+      res.data.forEach((i: any) => i.housing.pictures[0].picture_name = getApp().global.picturePath + i.housing.pictures[0].picture_name)
+      this.setData({
+        myFavoriteRentHouse: res.data
+      });
+      const myFavoriteRentHouse = res.data;
+      // eslint-disable-next-line promise/always-return
+      for (const item of myFavoriteRentHouse) {
+        const model = [];
+        if (item.housing.hus_rooms > 0) {
+          model.push(`${item.housing.hus_rooms}室`);
         }
-      })
+        if (item.housing.hus_halls > 0) {
+          model.push(`${item.housing.hus_halls}厅`);
+        }
+        if (item.housing.hus_kitchens > 0) {
+          model.push(`${item.housing.hus_kitchens}厨`);
+        }
+        if (item.housing.hus_toilets > 0) {
+          model.push(`${item.housing.hus_toilets}卫`);
+        }
+        this.setData({
+          model: model.join(' ')
+        });
+      }
+    })
       .catch((err: any) => {
         console.log(err);
       });
 
 
     const chosenCity: City = Cities.find(item => item.code == wx.getStorageSync('city').toUpperCase())!;
-    
+
     this.setData({
       husPictureRootPath: chosenCity.husPictureRootPath
     });
