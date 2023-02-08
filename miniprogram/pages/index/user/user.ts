@@ -21,15 +21,14 @@ Component({
       if (getApp().global.token) {
         await login()
       }
-
       setInterval(() => {
         if (getApp().global.token) {
           this.setData({
             userInfo: getApp().global.userInfo,
-            token: getApp().global.token
+            token: getApp().global.token,
+            erptoken: getApp().global.erptoken
           })
         }
-
       }, 1000)
     }
   },
@@ -63,13 +62,13 @@ Component({
     //跳转到erp网页版
     toErpView() {
       wx.navigateTo({
-        url: '/pages/public/erp-webview/erp-webview'
+        url: '/pages/erp-webview/erp-webview'
       });
     },
 
     toProfilePage() {
       wx.navigateTo({
-        url: `/pages/public/myprofile/my-profile/my-profile`
+        url: `/pages/myprofile/my-profile/my-profile`
       });
     }
   },
