@@ -143,6 +143,7 @@ input.weui-btn {
 }
 
 .weui-btn_common {
+  margin: 2vh auto;
   background-color: #fff;
   color: #06ae56
 }
