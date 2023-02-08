@@ -3,7 +3,17 @@
     "pages/index/index",
     "pages/house-details/house-details",
     "pages/enroll/enroll",
-    "pages/select-city/select-city"
+    "pages/select-city/select-city",
+    "pages/multiple/multiple",
+    "pages/myprofile/my-access-logs/my-access-logs",
+    "pages/myprofile/my-entrusted-housing/my-entrusted-housing",
+    "pages/myprofile/my-favorite-ershoufang/my-favorite-ershoufang",
+    "pages/myprofile/my-profile/my-profile",
+    "pages/house-list/house-list",
+    "pages/house-list-rent/house-list-rent",
+    "pages/erp-webview/erp-webview",
+    "pages/vr-webview/vr-webview",
+    "pages/search/search"
   ],
   "window": {
     "backgroundTextStyle": "light",
