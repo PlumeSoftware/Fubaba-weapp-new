@@ -51,17 +51,17 @@
       <van-cell
         title="我的浏览记录"
         is-link="true"
-        url="/pages/public/myprofile/my-access-logs/my-access-logs"
+        url="/pages/myprofile/my-access-logs/my-access-logs"
       />
       <van-cell
         title="我关注的二手房"
         is-link="true"
-        url="/pages/public/myprofile/my-favorite-ershoufang/my-favorite-ershoufang"
+        url="/pages/myprofile/my-favorite-ershoufang/my-favorite-ershoufang"
       />
       <van-cell
         title="我的委托"
         is-link="true"
-        url="/pages/public/myprofile/my-entrusted-housing/my-entrusted-housing"
+        url="/pages/myprofile/my-entrusted-housing/my-entrusted-housing"
       />
     </view>
     <view class="weui-panel" wx:if="{{token}}">
