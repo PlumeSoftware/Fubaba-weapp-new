@@ -13,15 +13,13 @@ Component({
     },
     methods: {
         //进入二手房页面
-        erShouFang() {
-        },
+        erShouFang() { wx.navigateTo({ url: "/pages/house-list/house-list" }) },
         xinFang() {
         },
-        rentHouse() {
-        },
+        rentHouse() { wx.navigateTo({ url: "/pages/house-list-rent/house-list-rent" }) },
         erp() { wx.navigateTo({ url: "/pages/erp/home/erphome" }); },
         // 去往搜索页面跳转
-        onFouse() { wx.navigateTo({ url: '/pages/public/search/search' }); },
+        onFouse() { wx.navigateTo({ url: '/pages/search/search' }); },
         // 城市切换
         changeCity() { wx.navigateTo({ url: '/pages/select-city/select-city' }); },
         //获得分享
@@ -29,6 +27,7 @@ Component({
     },
     lifetimes: {
         async ready() {
+            //@ts-ignore
             this.setData({
                 ershoufangSellingInfos: (await webGet<{ data: any }>('/api/houses-suggestion/personalize'))?.data,
                 city: getApp().global.city,
