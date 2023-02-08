@@ -5,9 +5,6 @@
 /* eslint-disable promise/always-return */
 /* eslint-disable @typescript-eslint/comma-dangle */
 /* eslint-disable promise/catch-or-return */
-
-import * as WxappApis from '../../../../utils/api-request';
-
 Page({
   data: {
     url: ''
@@ -21,7 +18,7 @@ Page({
   },
   onShow() {
     this.setData({
-      url: `https://fmj.51fubaba.com:6443/picture/qr_picture/${wx.getStorageSync('city')}${wx.getStorageSync('agent_tel').slice(0, 11)}.png`
+      url: `https://fmj.51fubaba.com:6443/picture/qr_picture/${getApp().get('city')}${getApp().get('agent_tel').slice(0, 11)}.png`
     })
   },
 
