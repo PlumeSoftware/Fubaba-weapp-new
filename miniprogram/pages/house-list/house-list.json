@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "二手房",
+  "usingComponents": {
+    "house-list-item": "../../component/house-list-item/house-list-item"
+  }
+}
