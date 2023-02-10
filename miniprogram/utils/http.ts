@@ -12,20 +12,11 @@ export const webGet = async function <T>(url: string, params: any = new Object()
         wx.request({
             url: url,
             method: 'GET',
-            header: {
-                token: token,
-                cookie: token
-            },
+            header: { token: token, cookie: token },
             success: (res) => {
-                if (res.statusCode < 400) {
-                    r(res.data as T)
-                } else {
-                    r({} as T)
-                }
+                if (res.statusCode < 400) { r(res.data as T) } else { r({} as T) }
             },
-            fail: () => {
-                r({} as T)
-            }
+            fail: () => { r({} as T) }
         })
     })
 }
