@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "租房",
-  "usingComponents": {
-    "house-list-item": "../../component/house-list-item/house-list-item"
-  }
-}
