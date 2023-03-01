@@ -1,0 +1,43 @@
+<van-search
+  model:value="{{ referKeyword }}"
+  placeholder="请输入搜索关键词"
+  use-action-slot
+  background="#ededed"
+  bind:change="onChange"
+></van-search>
+<view class="main-container">
+  <view class="weui-cells suggestion-list" wx:if="{{ershoufangSearchSuggestion}}">
+    <ng-container wx:if="{{  ershoufangSearchSuggestion.length > 0 }}">
+      <view
+        wx:for="{{ershoufangSearchSuggestion}}"
+        wx:key="index"
+        class="weui-cell weui-cell_access"
+        href="javascript:;"
+        data-item="{{item}}"
+        bindtap="toSearchSugItem"
+      >
+        <view class="weui-cell__hd">
+          <span class="sug-region">小区</span>
+        </view>
+
+        <view class="weui-cell__bd">
+          <view class="ellipsis-txt">
+            <span>{{ item.hus_build_name }}</span>
+            <span class="region" wx:if="{{item.hus_chengqu}}">({{ item.hus_chengqu }})</span>
+          </view>
+        </view>
+        <view class="weui-cell__ft">{{ item.cnt }}套</view>
+      </view>
+    </ng-container>
+
+  </view>
+  <view class="weui-cells suggestion-list a">
+    <view class="weui-flex__item keyword-item" wx:if="{{ershoufangSearchSuggestion.length == 0&&req_type==1}}">
+      <van-empty description="没有找到相关数据" />
+    </view>
+    <view class="weui-flex__item keyword-item" wx:if="{{req_type==0}}">
+      <van-empty description="租房内容请直接搜索" />
+    </view>
+  </view>
+</view>
+
