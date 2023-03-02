@@ -18,7 +18,7 @@ Page({
   },
   onShow() {
     this.setData({
-      url: `https://fmj.51fubaba.com:6443/picture/qr_picture/${getApp().get('city')}${getApp().get('agent_tel').slice(0, 11)}.png`
+      url: `https://fmj.51fubaba.com:6443/picture/qr_picture/${getApp().get('code')}${getApp().get('agent_tel').slice(0, 11)}.png`
     })
   },
 

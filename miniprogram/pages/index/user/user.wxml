@@ -19,7 +19,7 @@
               <li class="weui-media-box__info__meta">{{ userInfo.phone }}</li>
             </ul>
           </view>
-          <view wx:if="{{isAgent}}" bind:tap="toProfilePage">
+          <view wx:if="{{erptoken}}" bind:tap="toProfilePage">
             <van-icon
               color="gray"
               name="qr"

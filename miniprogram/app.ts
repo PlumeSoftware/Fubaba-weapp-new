@@ -10,6 +10,7 @@ App<IAppOption>({
     api: 'https://mobile.51fubaba.cn:8443/zh-weapp',
     picturePath: 'https://haomai.51fubaba.com:5443/picture/house_picture/',
 
+    agent_user_id: '',
     agent_real_name: '',
     agent_tel: '',//经纪人自带该字段；若普通用户存在该字段则表示绑定
 
@@ -32,7 +33,8 @@ App<IAppOption>({
   },
 
   changeCity(code: string) {
-    const target = this.global.cities.find((i: { code: string }) => i.code == code);
+    const target = this.global.cities.find((i: { code: string, city: string }) => i.code == code || i.city == code);
+    console.log(code, target)
     this.global.code = target.code;
     this.global.city = target.city;
     this.global.picturePath = target.picturePath;
