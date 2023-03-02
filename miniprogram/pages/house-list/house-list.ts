@@ -52,15 +52,18 @@ Page({
     },
     index: 0,
     fillItem: '',
-    targetItem: ''
+    targetItem: '',
+    keyword: ''
   },
   onLoad() {
     //屏幕高度
     const height = wx.getSystemInfoSync().windowHeight;
+    const pages = getCurrentPages();
+    const { keyword } = pages[pages.length - 1].options
     this.setData({
       height: height,
       citySelect: wx.getStorageSync('city'),
-      keyword: wx.getStorageSync('keyword')
+      keyword: keyword || ''
     });
     this.onSearch();
     // 转发api
@@ -126,12 +129,12 @@ Page({
 
   onFouse() {
     wx.navigateTo({
-      url: '/pages/public/search/search',
+      url: '/pages/search/search?req_type=1',
     });
   },
   // 搜索
   onSearch() {
-    this.searchSellingHouse(wx.getStorageSync('keyword'), 1, this.data.queryCriteria)
+    this.searchSellingHouse(this.data.keyword, 1, this.data.queryCriteria)
       .then((res: any) => {
         console.log(res.data.records[0])
         this.setData({ ershoufangSellingInfos: res.data.records });
@@ -141,7 +144,7 @@ Page({
   // 城市切换
   onCilkCity() {
     wx.navigateTo({
-      url: '/pages/public/select-city/select-city'
+      url: '/pages/select-city/select-city'
     });
   },
 

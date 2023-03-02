@@ -6,7 +6,7 @@
 /* eslint-disable object-curly-spacing */
 import { webGet, webPost } from '../../utils/http';
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
-import CryptoJS from 'crypto-js';
+import CryptoJS, { MD5 } from 'crypto-js';
 
 Page({
   data: {
@@ -228,11 +228,8 @@ Page({
   },
 
   onShareAppMessage() {
-    let url: string = this.data.shareUrl;
-
     //复制原先的参数，无论是携带参数进入还是网络请求
     const options = JSON.parse(JSON.stringify(this.data.shareObject));
-
     //由经纪人进行分享，修改分享后的参数，上传分享码
     if (getApp().get('erptoken')) {
       options['agent_user_id'] = getApp().get('agent_user_id');
@@ -240,19 +237,21 @@ Page({
       options['agent_tel'] = getApp().get('agent_tel');
       const content = {
         req_id: this.data.base.req_id,
-        agent_user_id: getApp().get('sharingCode'),
+        agent_user_id: getApp().get('agent_user_id'),
         sharingCode: getApp().get('sharingCode')
       };
       webPost('/api/agent/recordSharingCode', content)
     }
 
-    const optionKeys: Array<string> = Object.keys(options);
-    optionKeys.forEach((key: string) => {
-      if (options[key] != 'null')
-        url = url + key + '=' + options[key] + '&';
-    })
+    let url = "/pages/house-details/house-details?"
+
+    url = url + `req_id=${this.data.base.req_id}`
+
+    url = url + `agent_tel=${getApp().get('agent_tel')}`;
     url = url + `sharingCode=${getApp().get('sharingCode')}`;
     url = url + `&city=${getApp().get('city')}`;
+    url = url + `&code=${getApp().get('code')}`;
+
     return {
       title: this.data.shareTitle,
       path: url,
@@ -289,7 +288,7 @@ Page({
 
     const content = {
       req_id: this.data.base.req_id,
-      agent_user_id: getApp().get('sharingCode'),
+      agent_user_id: getApp().get('agent_user_id'),
       sharingCode: getApp().get('sharingCode')
     };
 
