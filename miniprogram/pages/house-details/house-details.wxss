@@ -1,52 +1,8 @@
-.house-swiper-tip {
-  position: relative;
-  overflow: hidden;
-  background-color: #fff;
-  padding: 24px 16px;
-}
-
-.active-show {
-  color: #3072f6;
-  font-weight: bold;
-}
-
-.map_title_wrapper {
-  display: flex;
-  justify-content: space-around;
-}
-
-.map_title {
-  height: 30px;
-  line-height: 40px;
-}
-
-.color {
-  background-color: white;
-}
-
-.weui-cell {
-  padding: 5px;
-  font-size: 16px;
-}
-
-#baidumap_container {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.baidumap_wrapper {
-  height: 300px;
-}
-
-
+/* 房子详情卡 */
 .house {
   padding-top: 10px;
   padding-bottom: 0;
   background-color: #fff;
-}
-
-.weui-article {
   padding: 10px 16px 0px 16px;
   font-size: 17px;
   color: rgba(0, 0, 0, 0.9);
@@ -55,45 +11,22 @@
   hyphens: auto;
 }
 
-.house-tags {
-  margin: 0;
-  /* padding-top: 16px; */
-  overflow: hidden;
+/* 房子主要信息 */
+.house .house-overview {
+  margin-bottom: 1.5em;
 }
 
-.house .house-tags .tag {
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0;
-  height: 16px;
-  line-height: 16px;
-  color: #849aae;
-  border-radius: 0.533vw;
-  padding: 0 3px;
-  background: #edf0f3;
-  margin-right: 5px;
-  margin-bottom: 3px;
-}
-
-.house-overview-desc {
+.house .house-overview .house-overview-desc {
   position: relative;
   margin-top: 10px;
 }
 
-.house .house-overview-desc .house-title {
+.house .house-overview .house-overview-desc .house-title {
   font-size: 4.8vw;
   margin: 0 44px 0 0;
 }
 
-.weui-article h1 {
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 0.9em;
-  line-height: 1.4;
-}
-
-.house .house-overview-desc .attention {
+.house .house-overview .house-overview-desc .attention {
   position: absolute;
   width: 44px;
   right: 0;
@@ -105,7 +38,7 @@
   align-items: center;
 }
 
-.attention .attention-icon {
+.house .house-overview .house-overview-desc .attention .attention-icon {
   margin: 0 2.667vw;
   display: inline-block;
   width: 7.867vw;
@@ -115,7 +48,7 @@
   background-repeat: no-repeat;
 }
 
-.text {
+.house .house-overview .house-overview-desc .attention .text {
   display: block;
   color: #101d37;
   font-size: 3.667vw;
@@ -125,13 +58,41 @@
   font-weight: 500;
 }
 
-.house-detail-desc {
+.house .house-overview .house-overview-desc .attentioned {
+  position: absolute;
+  width: 44px;
+  right: 0;
+  top: 50%;
+  font-size: 0;
+  transform: translateY(-50%);
+}
+
+.house .house-overview .house-overview-desc .attentioned .attention-icon {
+  margin: 0 2.667vw;
+  display: inline-block;
+  width: 7.867vw;
+  height: 7.867vw;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgeT0iMjUyIj48cGF0aCBmaWxsPSIjMzA3MmY2IiBkPSJNMTYgMjhjLS41MjUgMC0xLjA1LS4zNDgtMS4wNS0uNTIyLS41MjUtLjM0OC05LjQ1LTkuMjE3LTEwLjY3NS0xMC40MzVDMi44NzUgMTUuNDc4IDIgMTMuNTY1IDIgMTEuNjUycy44NzUtNCAyLjI3NS01LjM5MVM3LjYgNCA5LjcgNHM0LjAyNS44NyA1LjQyNSAyLjI2MWMuMzUuMzQ4LjcuNjk2Ljg3NSAxLjA0NC4xNzUtLjM0OC41MjUtLjY5Ni44NzUtMS4wNDRDMTguMjc1IDQuODcgMjAuMiA0IDIyLjMgNHM0LjAyNS44NyA1LjQyNSAyLjI2MUMyOS4xMjUgNy42NTIgMzAgOS41NjUgMzAgMTEuNjUycy0uODc1IDQtMi4yNzUgNS4zOTJDMjYuNSAxOC4yNjEgMTcuNTc1IDI3LjEzMSAxNy4wNSAyNy40NzhjMCAuMTc0LS41MjUuNTIyLTEuMDUuNTIyeiIvPjwvc3ZnPg==);
+  background-size: 7.867vw 7.867vw;
+  background-repeat: no-repeat;
+}
+
+.house .house-overview .house-detail-desc {
   width: 100%;
   margin-top: 16px;
   font-size: 3.8vw;
 }
 
-.house .house-detail-desc .desc-block .desc {
+.house .house-overview .house-detail-desc .desc-block {
+  display: inline-block;
+  width: 32%;
+  height: 34px;
+  padding-left: 21px;
+  border-right: 1px solid #e4e6f0;
+  box-sizing: border-box;
+}
+
+.house .house-overview .house-detail-desc .desc-block .desc {
   font-weight: 700;
   color: #fa5741;
   letter-spacing: 0;
@@ -139,7 +100,7 @@
   margin: 0;
 }
 
-.house .house-detail-desc .desc-block .title {
+.house .house-overview .house-detail-desc .desc-block .title {
   /* display: inline-block; */
   font-size: 3.4vw;
   color: #999;
@@ -148,60 +109,99 @@
   margin: 1.067vw 0 0;
 }
 
-.weui-article p {
-  margin: 0 0 0.8em;
-}
-
-.house section:last-child {
-  margin-bottom: 0;
-}
-
+/* 房子其他信息 */
 .house .house-intro {
   margin-top: 10px;
   background: #fff;
   overflow: hidden;
 }
 
-.house-overview {
-  margin-bottom: 1.5em;
-}
-
-.house .house-intro .weui-flex.house-attrs {
+.house .house-intro .weui-flex {
   display: flex;
   flex-wrap: wrap;
 }
 
-.weui-flex {
-  display: flex;
-}
-
-.house .house-intro .weui-flex.house-attrs .weui-flex__item {
+.house .house-intro .weui-flex .weui-flex__item {
   flex: 1 0 50%;
   margin-bottom: 12px;
 }
 
-.weui-flex__item {
-  flex: 1;
-}
-
-.house .house-intro .weui-flex.house-attrs .weui-flex__item .attr {
+.house .house-intro .weui-flex .weui-flex__item .attr {
   font-size: 3.8vw;
   color: #999;
   letter-spacing: 0;
   line-height: 4.267vw;
 }
 
-.house .house-intro .weui-flex.house-attrs .weui-flex__item .desc {
+.house .house-intro .weui-flex .weui-flex__item .desc {
   font-size: 3.8vw;
   color: #222;
   letter-spacing: 0;
 }
 
-.house .house-intro .weui-flex.house-attrs {
+/* 配套设施、经纪人房评和相关房源卡片 */
+.weui-panel {
+  background-color: #fff;
+  margin-top: 10px;
+  position: relative;
+  overflow: hidden;
+  font-size: 2.4vw;
+}
+
+.weui-panel .weui-panel__hd {
+  padding: 16px 16px 13px;
+  color: rgba(0, 0, 0, 0.9);
+  font-size: 15px;
+  font-weight: 700;
+  position: relative;
+}
+
+.weui-panel .weui-panel__hd:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  color: var(--weui-FG-3);
+  transform-origin: 0 100%;
+  transform: scaleY(0.5);
+  left: 15px;
+}
+
+.weui-panel .plant-list {
+  margin: 0 auto;
+  width: 100vw;
+  padding: 3vh 4vw 0 4vw;
   display: flex;
   flex-wrap: wrap;
 }
 
+.weui-panel .plant-list .plant-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 18vw;
+  height: 16vw;
+}
+
+.weui-panel .plant-list .plant-item view {
+  margin-top: -4rpx;
+  font-size: 12px;
+}
+
+.weui-panel .weui-media-box {
+  padding: 16px;
+  position: relative;
+  color: rgba(0, 0, 0, 0.3);
+  font-size: 14px;
+  line-height: 1.4;
+  height: auto;
+  word-wrap: break-word;
+}
+
+/* 页脚经纪人联系相关 */
 .agent-foot {
   position: fixed;
   bottom: 0;
@@ -249,18 +249,9 @@
   overflow: hidden;
 }
 
-a {
-  text-decoration: none;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
-.agent-foot .agent-container .agent-info .agent-avatar-block .agent-avatar img {
+.agent-foot .agent-container .agent-info .agent-avatar-block .agent-avatar.image-size {
   width: 100%;
-  height: auto;
-}
-
-a img {
-  border: 0;
+  height: 100%
 }
 
 .agent-foot .agent-container .agent-info .agent-des {
@@ -288,11 +279,7 @@ a img {
   width: 60%;
 }
 
-.weui-btn_primary {
-  background-color: var(--weui-BRAND);
-}
-
-.weui-btn {
+.agent-foot .agent-container .agent-content .weui-btn {
   position: relative;
   display: block;
   width: 184px;
@@ -309,8 +296,10 @@ a img {
   border-radius: 4px;
   overflow: hidden;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  background-color: #07c160;
 }
 
+/* Home键标样式 */
 .sideicon {
   position: fixed;
   right: 15px;
@@ -327,16 +316,104 @@ a img {
   justify-content: center;
 }
 
-.sideicon.icon-0 {
+.icon-0 {
   bottom: 20vh;
 }
 
-.sideicon.icon-1 {
+.icon-1 {
   bottom: 30vh;
 }
 
-.sideicon.icon-2 {
-  bottom: 44vw;
+/* 不知道用来干嘛的，页面无匹配项 */
+/* .house-swiper-tip {
+  position: relative;
+  overflow: hidden;
+  background-color: #fff;
+  padding: 24px 16px;
+}
+
+.active-show {
+  color: #3072f6;
+  font-weight: bold;
+}
+
+.map_title_wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.map_title {
+  height: 30px;
+  line-height: 40px;
+}
+
+.color {
+  background-color: white;
+}
+
+.weui-cell {
+  padding: 5px;
+  font-size: 16px;
+}
+
+百度地图容器
+#baidumap_container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.baidumap_wrapper {
+  height: 300px;
+}
+
+ 
+.house-tags {
+  margin: 0;
+  overflow: hidden;
+}
+
+.house .house-tags .tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+  height: 16px;
+  line-height: 16px;
+  color: #849aae;
+  border-radius: 0.533vw;
+  padding: 0 3px;
+  background: #edf0f3;
+  margin-right: 5px;
+  margin-bottom: 3px;
+}
+
+.weui-article h1 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 0.9em;
+  line-height: 1.4;
+}
+
+.weui-article p {
+  margin: 0 0 0.8em;
+} 
+
+.house section:last-child {
+  margin-bottom: 0;
+}
+
+.agent-foot .agent-container .agent-info .agent-avatar-block .agent-avatar img {
+  width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+a img {
+  border: 0;
 }
 
 .van-col {
@@ -351,53 +428,6 @@ a img {
   margin: 0 40px;
   font-size: 15px;
   border-radius: 4px;
-}
-
-.weui-panel {
-  background-color: #fff;
-  margin-top: 10px;
-  position: relative;
-  overflow: hidden;
-  font-size: 2.4vw;
-}
-
-.weui-panel__hd {
-  padding: 16px 16px 13px;
-  color: rgba(0, 0, 0, 0.9);
-  font-size: 15px;
-  font-weight: 700;
-  position: relative;
-}
-
-.weui-panel__hd:after {
-  content: " ";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  height: 1px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  color: var(--weui-FG-3);
-  transform-origin: 0 100%;
-  transform: scaleY(0.5);
-  left: 15px;
-}
-
-.house-detail-desc .desc-block:first-child {
-  padding-left: 0;
-}
-
-.house .house-detail-desc .desc-block {
-  display: inline-block;
-  width: 32%;
-  height: 34px;
-  padding-left: 21px;
-  border-right: 1px solid #e4e6f0;
-  box-sizing: border-box;
-}
-
-.house-detail-desc .desc-block:first-child {
-  padding-left: 0;
 }
 
 .weui-media-box__desc {
@@ -415,59 +445,6 @@ a img {
   hyphens: auto;
 }
 
-.weui-media-box_text{
-  color: rgba(0, 0, 0, 0.3);
-  font-size: 14px;
-  line-height: 1.4;
-  height: auto;
-  word-wrap: break-word;
-}
-
-.house .house-overview-desc .attentioned {
-  position: absolute;
-  width: 44px;
-  right: 0;
-  top: 50%;
-  font-size: 0;
-  transform: translateY(-50%);
-}
-
-.attentioned .attention-icon {
-  margin: 0 2.667vw;
-  display: inline-block;
-  width: 7.867vw;
-  height: 7.867vw;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgeT0iMjUyIj48cGF0aCBmaWxsPSIjMzA3MmY2IiBkPSJNMTYgMjhjLS41MjUgMC0xLjA1LS4zNDgtMS4wNS0uNTIyLS41MjUtLjM0OC05LjQ1LTkuMjE3LTEwLjY3NS0xMC40MzVDMi44NzUgMTUuNDc4IDIgMTMuNTY1IDIgMTEuNjUycy44NzUtNCAyLjI3NS01LjM5MVM3LjYgNCA5LjcgNHM0LjAyNS44NyA1LjQyNSAyLjI2MWMuMzUuMzQ4LjcuNjk2Ljg3NSAxLjA0NC4xNzUtLjM0OC41MjUtLjY5Ni44NzUtMS4wNDRDMTguMjc1IDQuODcgMjAuMiA0IDIyLjMgNHM0LjAyNS44NyA1LjQyNSAyLjI2MUMyOS4xMjUgNy42NTIgMzAgOS41NjUgMzAgMTEuNjUycy0uODc1IDQtMi4yNzUgNS4zOTJDMjYuNSAxOC4yNjEgMTcuNTc1IDI3LjEzMSAxNy4wNSAyNy40NzhjMCAuMTc0LS41MjUuNTIyLTEuMDUuNTIyeiIvPjwvc3ZnPg==);
-  background-size: 7.867vw 7.867vw;
-  background-repeat: no-repeat;
-}
-
-.plant-list{
-  margin: 0 auto;
-  width: 100vw;
-  padding:3vh 4vw 0 4vw;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.plant-list .plant-item{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 18vw;
-  height: 16vw;
-}
-
-.plant-list .plant-item view{
-  margin-top: -4rpx;
-  font-size: 12px;
-}
-
-.weui-media-box {
-  padding: 16px;
-  position: relative;
-}
-
 .page-section-gap {
   box-sizing: border-box;
   padding: 0 30rpx;
@@ -482,10 +459,6 @@ a img {
   height: 100%;
 }
 
-.weui-btn_primary {
-  background-color: #07c160;
-}
-
 .slide-image {
   width: 100%;
   height: 100%;
@@ -497,7 +470,7 @@ a img {
 }
 
 .swiper .vr-btn {
-  position:absolute;
+  position: absolute;
   top: 5%;
   left: 42%;
   opacity: 0.75;
@@ -513,7 +486,6 @@ a img {
   height: 100%;
 }
 
-.image-size {
-  width: 100%;
-  height: 100%
-}
+.icon-2 {
+  bottom: 44vw;
+} */

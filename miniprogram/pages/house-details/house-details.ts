@@ -41,56 +41,56 @@ Page({
   },
 
   onShow() {
-    const pages = getCurrentPages(); // 获取加载的页面
-    const currentPage = pages[pages.length - 1]; // 获取当前页面的对象
-    const { sharingCode } = currentPage.options; // 获取url中的参数
-    if (sharingCode && !getApp().get('erptoken')) {
-      getApp().set('sharingCode', sharingCode, true)
-    }
-    const token = getApp().get('token');
-    const question_flag = wx.getStorageSync('question_flag');
+    // const pages = getCurrentPages(); // 获取加载的页面
+    // const currentPage = pages[pages.length - 1]; // 获取当前页面的对象
+    // const { sharingCode } = currentPage.options; // 获取url中的参数
+    // if (sharingCode && !getApp().get('erptoken')) {
+    //   getApp().set('sharingCode', sharingCode, true)
+    // }
+    // const token = getApp().get('token');
+    // const question_flag = wx.getStorageSync('question_flag');
 
 
-    if (question_flag == 1) {
-      //是否为拉黑用户
-      wx.showModal({
-        title: '账号或设备异常', //提示的标题
-        content: '请联系客服89853988', //提示的内容
-        showCancel: false,
-        confirmText: "确定",
-        success: (res) => {
-          if (res.confirm) {
-            wx.reLaunch({
-              url: '/pages/index/index'
-            });
-          }
-        },
-      })
-    } else if (!token) {
-      //检测是否登录
-      wx.showModal({
-        title: '用户未授权', //提示的标题
-        content: '微信授权后即可查看房源详情', //提示的内容
-        confirmText: "前往授权",
-        success: (res) => {
-          if (res.confirm) {
-            wx.navigateTo({
-              url: `/pages/enroll/enroll`,
-            })
-          } else if (res.cancel) {
-            wx.reLaunch({
-              url: '/pages/index/index'
-            });
-          }
-        },
-      })
-    } else {
-      //如果已经登录，再获取一次房源信息用户记录
+    // if (question_flag == 1) {
+    //   //是否为拉黑用户
+    //   wx.showModal({
+    //     title: '账号或设备异常', //提示的标题
+    //     content: '请联系客服89853988', //提示的内容
+    //     showCancel: false,
+    //     confirmText: "确定",
+    //     success: (res) => {
+    //       if (res.confirm) {
+    //         wx.reLaunch({
+    //           url: '/pages/index/index'
+    //         });
+    //       }
+    //     },
+    //   })
+    // } else if (!token) {
+    //   //检测是否登录
+    //   wx.showModal({
+    //     title: '用户未授权', //提示的标题
+    //     content: '微信授权后即可查看房源详情', //提示的内容
+    //     confirmText: "前往授权",
+    //     success: (res) => {
+    //       if (res.confirm) {
+    //         wx.navigateTo({
+    //           url: `/pages/enroll/enroll`,
+    //         })
+    //       } else if (res.cancel) {
+    //         wx.reLaunch({
+    //           url: '/pages/index/index'
+    //         });
+    //       }
+    //     },
+    //   })
+    // } else {
+    //   //如果已经登录，再获取一次房源信息用户记录
       const pages = getCurrentPages();
       const houseInfo = pages[pages.length - 1].options; // 获取url中的参数
 
       webGet(`/api/${houseInfo['req_type'] == '0' ? 'renthouse' : 'ershoufang'}/selling-houses/${houseInfo['req_id']}/${getApp().get('sharingCode') || null}`)
-    }
+    // }
   },
 
   async onLoad() {
