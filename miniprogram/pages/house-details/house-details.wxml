@@ -53,8 +53,8 @@
     </swiper>
   </ng-container>
 </view>
-<view class="house weui-article ">
-  <view class="house-overview">
+<view class="house">
+  <view class="house-overview"><!--房子关键信息卡（无css）-->
     <view class="house-overview-desc">
       <h1 class="house-title">{{housing.hus_build_name}} {{model}} {{housing.hus_expose}}</h1>
       <view
@@ -88,7 +88,7 @@
     </view>
   </view>
   <view class="house-intro">
-    <view class="weui-flex house-attrs" wx:if="{{base.req_type==1}}">
+    <view class="weui-flex" wx:if="{{base.req_type==1}}">
       <view class="weui-flex__item">
         <span class="attr">单价：</span>
         <span class="desc">{{base.req_amt3}}元/平</span>
@@ -131,7 +131,7 @@
         <span class="desc">{{ housing.hus_property_name}}</span>
       </view>
     </view>
-    <view class="weui-flex house-attrs" wx:if="{{base.req_type==0}}">
+    <view class="weui-flex" wx:if="{{base.req_type==0}}">
       <view class="weui-flex__item">
         <span class="attr">方式：</span>
         <span class="desc">{{pay_way}}</span>
@@ -146,7 +146,7 @@
       </view>
 
     </view>
-    <view class="weui-flex house-attrs">
+    <view class="weui-flex">
       <view class="weui-flex__item">
         <span class="attr">地址：</span>
         <span class="desc">{{housing.hus_chengqu=='null'?'':housing.hus_chengqu}} {{ housing.hus_build_name}}</span>
@@ -155,7 +155,7 @@
   </view>
 </view>
 <view class="weui-panel">
-  <view class="weui-panel__hd title">配套设施</view>
+  <view class="weui-panel__hd">配套设施</view>
   <view class="plant-list" wx:if="{{housing.hus_plant.length > 0}}">
     <view
       class="plant-item"
@@ -166,16 +166,16 @@
       <view>{{item.tagName}}</view>
     </view>
   </view>
-  <view class="weui-media-box weui-media-box_text" wx:else>
+  <view class="weui-media-box " wx:else>
     <view style="display:block;margin:2vh 0">
       请联系经纪人了解更多
     </view>
   </view>
 </view>
 <view class="weui-panel">
-  <view class="weui-panel__hd title">经纪人房评</view>
-  <view class="weui-panel__bd">
-    <view class="weui-media-box weui-media-box_text">
+  <view class="weui-panel__hd">经纪人房评</view>
+  <view class="weui-panel__bd"><!-- 暂无作用的一层（无css） -->
+    <view class="weui-media-box">
       <div
         wx:if="{{ad_remark[0]!='null'&&ad_remark[0]!=''}}"
         wx:for="{{ad_remark}}"
@@ -193,9 +193,9 @@
     </view>
   </view>
 </view>
-<view class="weui-panel weui-panel_access housing-list" wx:if="{{relatedHouses}}">
-  <view class="weui-panel__hd title">相关房源</view>
-  <view class="weui-panel__bd">
+<view class="weui-panel " wx:if="{{relatedHouses}}">
+  <view class="weui-panel__hd">相关房源</view>
+  <view class="weui-panel__bd"><!-- 限制相关房源卡片块一层（无css） -->
     <ng-container
       wx:for="{{relatedHouses}}"
       wx:key="index"
@@ -247,14 +247,14 @@
     </view>
   </view>
 </view>
-<view wx:if="{{isAgent}}" class="sideicon sideicon.icon-1">
+<view wx:if="{{isAgent}}" class="sideicon icon-1">
   <van-icon
     name="share"
     size="25"
     bind:click="onPaper"
   />
 </view>
-<view class="sideicon sideicon.icon-0">
+<view class="sideicon icon-0">
   <van-icon
     name="wap-home"
     size="25"
