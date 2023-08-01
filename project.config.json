@@ -35,7 +35,8 @@
     "minified": true,
     "uglifyFileName": false,
     "postcss": false,
-    "ignoreUploadUnusedFiles": true
+    "ignoreUploadUnusedFiles": true,
+    "condition": false
   },
   "condition": {},
   "editorSetting": {
