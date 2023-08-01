@@ -1,0 +1,25 @@
+<van-sticky container="{{ container }}">
+    <view class="sifter">
+        <view class="sifter-type" wx:for="{{sifterList}}" bind:tap="changeSifter" data-index="{{index}}">
+            <view>{{item.name}}</view>
+            <view wx:if="{{index==currentChooseIndex}}">
+                <image src="../../images/tools/upon-active.png" />
+            </view>
+            <view wx:else>
+                <image src="../../images/tools/down.png" />
+            </view>
+        </view>
+    </view>
+    <view class="sifter-panel" wx:if="{{currentChooseIndex!=-1}}">
+        <view wx:for="{{sifterList[currentChooseIndex].values}}">
+            <view bind:tap="changeChosen" data-typeindex="{{currentChooseIndex}}" data-chosenindex="{{index}}">
+                <view class="sifter-value {{item.choose?'item-active':''}}">{{item.name}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="sifter-btn" wx:if="{{currentChooseIndex!=-1}}">
+        <van-button color="#429EFD" block bind:tap="confirmSifter">
+            <span style="font-size:18px;font-weight:bold">筛选房源</span>
+        </van-button>
+    </view>
+</van-sticky>
