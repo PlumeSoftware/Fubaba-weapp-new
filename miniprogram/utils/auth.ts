@@ -3,6 +3,7 @@ import { webGet, webPost } from "./http";
 
 export const login = async function (): Promise<UserInfo> {
     const res: { code: string } = await new Promise(r => { wx.login({ success: (res) => { r(res) } }) });
+    console.log(res)
     const auth: any = { code: res.code };
 
     //如果缓存存在agent信息且不为经纪人，那么带上agent信息
@@ -11,7 +12,10 @@ export const login = async function (): Promise<UserInfo> {
         auth.city = getApp().get('city');
     }
 
-    const { userInfo, wxInfo, token } = (await webGet<{ userInfo: UserInfo, wxInfo: WxInfo, token: string }>('/api/wxapi/login', auth));
+    // const { userInfo, wxInfo, token } = (await webGet<{ userInfo: UserInfo, wxInfo: WxInfo, token: string }>('/api/wxapi/login', auth));
+    const { userInfo, wxInfo, token } = (await webGet<{ userInfo: UserInfo, wxInfo: WxInfo, token: string }>(
+        '/user/login', auth)
+        );
     //存储token
     getApp().set('token', token, true)
     //判断是否为拉黑用户

@@ -7,7 +7,7 @@ App<IAppOption>({
 
     code: 'zh',
     city: '庄河',
-    api: 'https://mobile.51fubaba.cn:8443/zh-weapp',
+    api: 'http://127.0.0.1:39443',
     picturePath: 'https://haomai.51fubaba.com:5443/picture/house_picture/',
 
     agent_user_id: '',
@@ -17,7 +17,7 @@ App<IAppOption>({
     sharingCode: '',
 
     cities: [
-      { code: 'zh', city: '庄河', api: 'https://mobile.51fubaba.cn:8443/zh-weapp', picturePath: 'https://haomai.51fubaba.com:5443/picture/house_picture/' },
+      { code: 'zh', city: '庄河', api: 'http://127.0.0.1:39443', picturePath: 'https://haomai.51fubaba.com:5443/picture/house_picture/' },
       { code: 'dl', city: '大连', api: 'https://mobile.51fubaba.cn:8443/dl-weapp', picturePath: 'https://fmj.51fubaba.com:6443/picture/house_picture/' }
     ],
   },
