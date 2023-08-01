@@ -12,7 +12,9 @@ export interface WxInfo {
 }
 
 export interface Agent {
-    agent_real_name: string
-    agent_tel: string
-    agent_user_id: number
+    agentTel: string;
+    avatar: string;
+    qrPic: string;
+    realName: string;
+    userId: number;
 }
