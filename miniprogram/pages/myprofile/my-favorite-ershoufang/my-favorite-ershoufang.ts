@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/comma-dangle */
 /* eslint-disable no-restricted-syntax */
 
-import { webGet } from "../../../utils/http";
+import { get } from "../../../utils/http";
 
 Page({
   data: {
@@ -11,7 +11,7 @@ Page({
     myFavoriteRentHouse: []
   },
   onLoad() {
-    webGet('/api/my-favorite/ershoufang').then((res: any) => {
+    get('/api/my-favorite/ershoufang').then((res: any) => {
       res.data.forEach((i: any) => i.housing.pictures[0].picture_name = getApp().global.picturePath + i.housing.pictures[0].picture_name)
       this.setData({
         myFavoriteErshoufangs: res.data
@@ -41,7 +41,7 @@ Page({
         console.log(err);
       });
 
-    webGet('/api/my-favorite/rentHouse').then((res: any) => {
+    get('/api/my-favorite/rentHouse').then((res: any) => {
       res.data.forEach((i: any) => i.housing.pictures[0].picture_name = getApp().global.picturePath + i.housing.pictures[0].picture_name)
       this.setData({
         myFavoriteRentHouse: res.data

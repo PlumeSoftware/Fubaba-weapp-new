@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable promise/always-return */
 
-import { webGet } from "../../utils/http";
+import { get } from "../../utils/http";
 import { login } from "../../utils/auth";
 import { UserInfo } from "../../entity/user";
 
@@ -19,7 +19,7 @@ Page({
     userInfo.fb_user_id = userInfo.fb_user_id
     if (!userInfo.phone) {
       const code = e.detail.code;
-      userInfo.phone = (await webGet<{ userInfo: UserInfo }>('/api/wxapi/getPhone', { code })).userInfo.phone
+      userInfo.phone = (await get<{ userInfo: UserInfo }>('/api/wxapi/getPhone', { code })).userInfo.phone
     }
     getApp().set('userInfo', userInfo)
 

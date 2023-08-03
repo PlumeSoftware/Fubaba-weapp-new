@@ -1,7 +1,7 @@
 /* eslint-disable promise/always-return */
 /* eslint-disable @typescript-eslint/comma-dangle */
 
-import { webGet } from "../../utils/http";
+import { get } from "../../utils/http";
 
 Page({
   data: {
@@ -20,7 +20,7 @@ Page({
   },
   onChange() {
     if (this.data.req_type) {
-      webGet('/api/houses-suggestion', { keyword: this.data.referKeyword })
+      get('/api/houses-suggestion', { keyword: this.data.referKeyword })
         .then((res: any) => { this.setData({ ershoufangSearchSuggestion: res.data }) })
     }
   },

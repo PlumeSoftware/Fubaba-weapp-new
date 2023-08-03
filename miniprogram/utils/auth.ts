@@ -1,5 +1,5 @@
 import { Agent, UserInfo, WxInfo } from "../entity/user";
-import { webGet, webPost } from "./http";
+import { get, post } from "./http";
 
 export const login = async function (): Promise<UserInfo> {
     const res: { code: string } = await new Promise(r => { wx.login({ success: (res) => { r(res) } }) });
@@ -12,8 +12,8 @@ export const login = async function (): Promise<UserInfo> {
         auth.city = getApp().get('city');
     }
 
-    // const { userInfo, wxInfo, token } = (await webGet<{ userInfo: UserInfo, wxInfo: WxInfo, token: string }>('/api/wxapi/login', auth));
-    const { userInfo, wxInfo, token } = (await webGet<{ userInfo: UserInfo, wxInfo: WxInfo, token: string }>(
+    // const { userInfo, wxInfo, token } = (await get<{ userInfo: UserInfo, wxInfo: WxInfo, token: string }>('/api/wxapi/login', auth));
+    const { userInfo, wxInfo, token } = (await get<{ userInfo: UserInfo, wxInfo: WxInfo, token: string }>(
         '/user/login', auth)
         );
     //存储token
@@ -26,7 +26,7 @@ export const login = async function (): Promise<UserInfo> {
 
     // 判断是否为经纪人
     if (userInfo.phone) {
-        const agent = (await webGet<{ data: Agent }>(`/api/agent/get/${userInfo.phone}`)).data;
+        const agent = (await get<{ data: Agent }>(`/api/agent/get/${userInfo.phone}`)).data;
         if (agent.agent_user_id) {
             const data =
             {
@@ -35,11 +35,11 @@ export const login = async function (): Promise<UserInfo> {
                 agent_tel: agent.agent_tel,
                 unionid: wxInfo.openid
             }
-            getApp().set('erptoken', (await webPost<{ data: string }>('/api/agent/update', data)).data, true);
+            getApp().set('erptoken', (await post<{ data: string }>('/api/agent/update', data)).data, true);
 
             getApp().set('agent_tel', agent.agent_tel,true)
             getApp().set('agent_real_name', agent.agent_real_name,true)
-            webGet('/api/agent/getQrPic', { city: getApp().get('city'), phone: agent.agent_tel.slice(0, 11) });
+            get('/api/agent/getQrPic', { city: getApp().get('city'), phone: agent.agent_tel.slice(0, 11) });
         }
     }
     return userInfo;

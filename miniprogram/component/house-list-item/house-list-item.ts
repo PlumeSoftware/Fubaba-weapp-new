@@ -1,4 +1,4 @@
-import { webGet } from "../../utils/http";
+import { get } from "../../utils/http";
 
 Component({
   properties: {
@@ -40,7 +40,7 @@ Component({
     },
 
     checkImageUrl(): void {
-      webGet<{ statusCode: number }>(`${this.data.husPictureRootPath} + ${this.properties.sellingHouse.housing.pictures[0].picture_name}`)
+      get<{ statusCode: number }>(`${this.data.husPictureRootPath} + ${this.properties.sellingHouse.housing.pictures[0].picture_name}`)
         .then(res => {
           if (res?.statusCode == 404) {
             this.properties.sellingHouse.housing.pictures.pop()

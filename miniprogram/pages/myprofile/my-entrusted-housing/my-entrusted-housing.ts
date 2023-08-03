@@ -3,7 +3,7 @@
 /* eslint-disable promise/catch-or-return */
 /* eslint-disable @typescript-eslint/comma-dangle */
 
-import { webGet } from "../../../utils/http";
+import { get } from "../../../utils/http";
 
 /* eslint-disable promise/always-return */
 Page({
@@ -18,7 +18,7 @@ Page({
         housing_city: 'DL'
       });
     }
-    webGet('/api/entrust-housing/ershoufang', { housingCity: this.data.housing_city })
+    get('/api/entrust-housing/ershoufang', { housingCity: this.data.housing_city })
       .then((res: any) => {
         for (const item of res.data) {
           item.expected_price = parseFloat(item.expected_price).toFixed(2);
@@ -38,7 +38,7 @@ Page({
       title: '是否取消委托',
       success: (res) => {
         if (res.confirm) {
-          webGet('/entrust-housing/ershoufang', {
+          get('/entrust-housing/ershoufang', {
             housingId: event.currentTarget.dataset.item.id
           })
             .then((res: any) => {

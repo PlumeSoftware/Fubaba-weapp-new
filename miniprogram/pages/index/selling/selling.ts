@@ -2,7 +2,7 @@
 /* eslint-disable object-curly-spacing */
 /* eslint-disable @typescript-eslint/comma-dangle */
 
-import { webPost } from "../../../utils/http";
+import { post } from "../../../utils/http";
 
 /* eslint-disable promise/always-return */
 Component({
@@ -34,7 +34,7 @@ Component({
   methods: {
     onSubmit() {
       this.data.city = this.data.housingCity;
-      webPost('/api/entrust-housing/ershoufang', this.data)
+      post('/api/entrust-housing/ershoufang', this.data)
         .then(() => {
           wx.showToast({
             title: '发布房源成功',

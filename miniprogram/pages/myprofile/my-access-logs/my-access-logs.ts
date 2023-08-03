@@ -1,7 +1,7 @@
 /* eslint-disable guard-for-in */
 /* eslint-disable object-curly-spacing */
 
-import { webGet } from "../../../utils/http";
+import { get } from "../../../utils/http";
 
 Page({
   data: {
@@ -11,7 +11,7 @@ Page({
     rentHouseAccessLogsGroup: []
   },
   onLoad() {
-    webGet('/api/my-access-logs/ershoufang').then((res: any) => {
+    get('/api/my-access-logs/ershoufang').then((res: any) => {
       res.data.data.forEach((i: any) => i.sellingInfo.housing.pictures[0].picture_name = getApp().global.picturePath + i.sellingInfo.housing.pictures[0].picture_name)
       console.log(res.data.data[0].sellingInfo.housing.pictures[0])
       this.setData({
@@ -19,7 +19,7 @@ Page({
       });
     });
 
-    webGet('/api/my-access-logs/renthouse').then((res: any) => {
+    get('/api/my-access-logs/renthouse').then((res: any) => {
       res.data.data.forEach((i: any) => i.sellingInfo.housing.pictures[0].picture_name = getApp().global.picturePath + i.sellingInfo.housing.pictures[0].picture_name)
       this.setData({
         rentHouseAccessLogsGroup: res.data.data

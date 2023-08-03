@@ -4,7 +4,7 @@
 /* eslint-disable @typescript-eslint/comma-dangle */
 /* eslint-disable no-var */
 /* eslint-disable object-curly-spacing */
-import { webGet, webPost } from '../../utils/http';
+import { get, post } from '../../utils/http';
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 import CryptoJS, { MD5 } from 'crypto-js';
 
@@ -89,7 +89,7 @@ Page({
       const pages = getCurrentPages();
       const houseInfo = pages[pages.length - 1].options; // 获取url中的参数
 
-      webGet(`/api/${houseInfo['req_type'] == '0' ? 'renthouse' : 'ershoufang'}/selling-houses/${houseInfo['req_id']}/${getApp().get('sharingCode') || null}`)
+      get(`/api/${houseInfo['req_type'] == '0' ? 'renthouse' : 'ershoufang'}/selling-houses/${houseInfo['req_id']}/${getApp().get('sharingCode') || null}`)
     // }
   },
 
@@ -116,7 +116,7 @@ Page({
     }
 
     //获取房源详情-二手房api
-    await webGet(`/api/${houseInfo['req_type'] == '0' ? 'renthouse' : 'ershoufang'}/selling-houses/${houseInfo['req_id']}/${getApp().get('sharingCode') || null}`).then(
+    await get(`/api/${houseInfo['req_type'] == '0' ? 'renthouse' : 'ershoufang'}/selling-houses/${houseInfo['req_id']}/${getApp().get('sharingCode') || null}`).then(
       (res: any) => {
         //设置房源类型为租房
         this.setData({ req_type: res.data['req_type'] })
@@ -155,7 +155,7 @@ Page({
 
       })
 
-    const existVr = await webGet<{ data: boolean }>(`/api/ershoufang/vr/check/${this.data.base.req_id}/`)
+    const existVr = await get<{ data: boolean }>(`/api/ershoufang/vr/check/${this.data.base.req_id}/`)
     this.setData({ existVr: existVr.data })
 
     let agent_tel;
@@ -166,12 +166,12 @@ Page({
       //获得经纪人信息，优先级 参数>缓存>网络请求
       agent_tel = houseInfo['agent_tel'] || getApp().get('agent_tel') || this.data.base.agent.agent_tel
     }
-    const agent = await webGet<{ data: {} }>(`/api/agent/get/${agent_tel.slice(0, 11)}`)
+    const agent = await get<{ data: {} }>(`/api/agent/get/${agent_tel.slice(0, 11)}`)
 
     this.setData({ agent: agent!.data })
 
     // 相关房源
-    webGet(`/api/${this.data.base.req_type ? 'ershoufang' : 'renthouse'}/selling-houses/${houseInfo['req_id']}/related-houses`)
+    get(`/api/${this.data.base.req_type ? 'ershoufang' : 'renthouse'}/selling-houses/${houseInfo['req_id']}/related-houses`)
       .then((res: any) => {
         if (getApp().get('sharingCode')) {
           res.data.forEach((item: any) => {
@@ -190,7 +190,7 @@ Page({
 
     // 获取关注房源api，判断是否已经关注
     if (getApp().get('token')) {
-      const favoriteList = (await webGet<{ data: AnyArray }>('/api/my-favorite/ershoufang')).data
+      const favoriteList = (await get<{ data: AnyArray }>('/api/my-favorite/ershoufang')).data
       if (favoriteList.find((i: any) => i.req_id === houseInfo['req_id'])) {
         this.setData({ attentioned: true });
       }
@@ -240,7 +240,7 @@ Page({
         agent_user_id: getApp().get('agent_user_id'),
         sharingCode: getApp().get('sharingCode')
       };
-      webPost('/api/agent/recordSharingCode', content)
+      post('/api/agent/recordSharingCode', content)
     }
 
     let url = "/pages/house-details/house-details?"
@@ -292,7 +292,7 @@ Page({
       sharingCode: getApp().get('sharingCode')
     };
 
-    webPost('/api/agent/recordSharingCode', content)
+    post('/api/agent/recordSharingCode', content)
     wx.reLaunch({
       url: url
     })
@@ -304,7 +304,7 @@ Page({
     const houseInfo = currentPage.options;
     if (houseInfo && !this.data.doingAttention) {
       this.data.doingAttention = true;
-      webGet('/api/my-favorite', { fyReqId: houseInfo.req_id })
+      get('/api/my-favorite', { fyReqId: houseInfo.req_id })
         .then((res: any) => {
           if (res) {
             this.setData({

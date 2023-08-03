@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/comma-dangle */
 /* eslint-disable promise/always-return */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { webGet } from '../../../utils/http';
+import { get } from '../../../utils/http';
 
 Component({
     data: {
@@ -29,7 +29,7 @@ Component({
         async ready() {
             //@ts-ignore
             this.setData({
-                ershoufangSellingInfos: (await webGet<{ data: any }>('/api/houses-suggestion/personalize'))?.data,
+                ershoufangSellingInfos: (await get<{ data: any }>('/api/houses-suggestion/personalize'))?.data,
                 city: getApp().global.city,
                 cityName: getApp().global.cities.find((i: { code: string }) => i.code == getApp().global.code).city
             })
