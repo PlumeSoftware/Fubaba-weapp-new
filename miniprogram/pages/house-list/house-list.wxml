@@ -1,1 +1,6 @@
-<sifter></sifter>
+<view style="position:fixed">
+    <sifter></sifter>
+</view>
+<view>
+    <view wx:for="{{houseList}}">{{item}}</view>
+</view>
